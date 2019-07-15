@@ -16,3 +16,11 @@
 ###> symfony/web-server-bundle ###
 /.web-server-pid
 ###< symfony/web-server-bundle ###
+.idea/deployment.xml
+.idea/misc.xml
+.idea/modules.xml
+.idea/php.xml
+.idea/rsv-project.iml
+.idea/symfony2.xml
+.idea/vcs.xml
+.idea/workspace.xml
