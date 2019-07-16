@@ -1,0 +1,100 @@
+/*=====================================================
+                    home2 style here
+=====================================================*/
+.header-area2 .header-bottom-area {
+  margin-top: 30px;
+}
+.header-area2 .mainmenu ul li a {
+  padding: 10px 0px;
+}
+.header-area2 .mainmenu {
+  margin: 25px 0 0;
+}
+.header-area2 .mainmenu ul li>ul li a {
+  padding: 10px 10px;
+}
+.header-area2 .search-form form {
+  margin: 25px 0px 0;
+}
+.featured-area2 {
+  display: block;
+}
+.featured-area2 .featured-items {
+  margin-right: 0;
+  border-radius: 0px;
+}
+.featured-area2 .flex-style {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+.featured-area2 .featured-content {
+  width: 100%;
+  padding: 0px 25px 40px 30px;
+}
+
+/*--------popular-post-area start--------*/
+.popular-post-area {
+  margin-bottom: 40px;
+}
+.widget-title {
+  font-size: 24px;
+  font-weight: 700;
+  border-bottom: 1px solid map-get($colors, lightgray);
+  padding-bottom: 15px;
+  margin-bottom: 25px;
+}
+.popular-post-area .widget {
+  padding: 40px 30px;
+  border: 1px solid map-get($colors, lightgray);
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 40px;
+}
+.widget_categories ul li {
+  display: block;
+  line-height: 33px;
+}
+.widget_categories ul li a {
+  position: relative;
+  padding-left: 20px;
+  display: block;
+}
+.widget_categories ul li:hover a {
+  padding-left: 25px;
+}
+.widget_categories ul li a:before {
+  position: absolute;
+  left: 0;
+  content: "\f054";
+  top: 0;
+  font-family: fontawesome;
+  font-size: 8px;
+}
+.widget_categories ul li:hover a:before {
+  left: 5px;
+  color: map-get($colors, secondary);
+}
+.popular-post-area .post-wrap {
+  margin-bottom: 40px;
+}
+.popular-post-area .post-img {
+  float: none;
+  margin-right: 0px;
+}
+.popular-post-area .post-img img {
+  visibility: visible;
+  width: 100%;
+}
+.popular-post-area .post-content {
+  padding: 25px;
+}
+.popular-post-area .post-content h3 a {
+  font-size: 19px;
+}
+.tanding-post-area .booking-content {
+  padding: 0px;
+}
+/*--------popular-post-area end--------*/

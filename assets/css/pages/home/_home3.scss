@@ -1,0 +1,157 @@
+/*=====================================================
+                    home3 style here
+=====================================================*/
+/*--------slider-area start--------*/
+.slider-items {
+  position: relative;
+}
+.slider-items:before {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: map-get($colors, darker);
+  content: "";
+  opacity: .5;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+  z-index: 9;
+}
+.slider-items img {
+  visibility: hidden;
+}
+.slider-content {
+  position: absolute;
+  left: 0;
+  bottom: 110px;
+  z-index: 99;
+  width: 100%;
+}
+.slider-content p {
+  color: map-get($colors, light);
+  font-size: 15px;
+  font-weight: 700;
+}
+.slider-content span {
+  display: block;
+  color: map-get($colors, light);
+  margin-bottom: 15px;
+  font-size: 13px;
+}
+.slider-content h2 {
+  color: map-get($colors, light);
+  line-height: 40px;
+  margin-bottom: 30px;
+  font-size: 30px;
+  font-weight: 700;
+}
+.slider-content a {
+  display: inline-block;
+  padding: 10px 30px;
+  background: map-get($colors, primary);
+  color: map-get($colors, light);
+  font-size: 14px;
+  border-radius: 20px;
+}
+.slider-content a:hover {
+  color: map-get($colors, dark);
+  background: map-get($colors, light);
+}
+.slider-active .owl-nav div {
+  position: absolute;
+  right: 10px;
+  bottom: 110px;
+  height: 40px;
+  width: 40px;
+  background: map-get($colors, light);
+  line-height: 40px;
+  text-align: center;
+  transition: all .3s;
+  -webkit-transition: all .3s;
+  -moz-transition: all .3s;
+  border-radius: 50%;
+}
+.slider-active .owl-nav div:hover {
+  background: map-get($colors, primary);
+  color: map-get($colors, light);
+}
+.slider-active .owl-nav div.owl-prev {
+  right: 50px;
+}
+
+/*--------slider-area end--------*/
+.post-area2 .featured-items {
+  width: 100%;
+  margin-bottom: 30px;
+}
+.post-area2 .featured-content {
+  width: 90%;
+}
+.mt-40 {
+  margin-top: 40px;
+}
+.featured-post-wrap,
+.featured-post-wrap2 {
+  overflow: hidden;
+  border: 1px solid map-get($colors, lightgray);
+  border-radius: 10px;
+}
+.featured-post-wrap .featured-post-content {
+  float: left;
+  width: 61%;
+  padding: 125px 30px;
+}
+.featured-post-content h2 {
+  font-size: 20px;
+  line-height: 30px;
+  margin-bottom: 20px;
+}
+.featured-post-content h2 a {
+  font-size: 20px;
+  font-weight: 700;
+}
+.featured-post-wrap .featured-post-img {
+  float: right;
+  width: 39%;
+}
+.featured-post-wrap .featured-post-img img {
+  visibility: hidden;
+}
+.featured-post-content p {
+  font-weight: 700;
+  line-height: 20px;
+}
+.featured-post-img img {
+  width: 100%;
+}
+.featured-post-content span {
+  display: block;
+  font-size: 13px;
+}
+.featured-post-wrap2 .featured-post-content {
+  padding: 32px 30px;
+}
+.tending-active .owl-nav div {
+  position: absolute;
+  right: 15px;
+  height: 40px;
+  top: -90px;
+  width: 40px;
+  text-align: center;
+  line-height: 40px;
+  border-radius: 50%;
+  border: 1px solid map-get($colors, lightgray);
+  background: transparent;
+  font-size: 10px;
+}
+.tending-active .owl-nav div:hover {
+  background: map-get($colors, primary);
+  color: map-get($colors, light);
+  border-color: map-get($colors, primary);
+}
+.tending-active .owl-nav div.owl-prev {
+  right: 65px;
+}
+.recent-post {
+  margin-bottom: 80PX;
+}

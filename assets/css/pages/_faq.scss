@@ -1,0 +1,40 @@
+/*=====================================================
+                faq-area page start
+=====================================================*/
+.faq-area {
+  padding: 80px 0px 30px;
+}
+.faq-wrap {
+  margin-bottom: 40px;
+}
+.faq-wrap h3 {
+  position: relative;
+  padding-left: 70px;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 32px;
+  margin-bottom: 20px;
+}
+.faq-wrap h3 span {
+  height: 40px;
+  width: 40px;
+  line-height: 40px;
+  display: block;
+  color: map-get($colors, light);
+  font-size: 14px;
+  font-weight: 700;
+  background: map-get($colors, primary);
+  text-align: center;
+  font-family: Roboto;
+  position: absolute;
+  left: 0;
+  border-radius: 5px;
+  top: 7px;
+}
+.faq-wrap p {
+  padding-left: 70px;
+  font-weight: 300;
+}
+.faq-area .booking-content {
+  padding: 0px 0px 0px 70px;
+}

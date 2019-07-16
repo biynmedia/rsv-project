@@ -1,0 +1,123 @@
+/*------------------featured-area start------------------*/
+.featured-area {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.featured-items {
+  margin-right: 30px;
+  position: relative;
+  width: 33.33%;
+  overflow: hidden;
+  border-radius: 5px;
+}
+.featured-items:last-child {
+  margin-right: 0px;
+}
+.featured-items img {
+  width: 100%;
+}
+.featured-content {
+  position: absolute;
+  left: 0;
+  bottom: 0px;
+  width: 60%;
+  padding: 0px 0px 40px 40px;
+  z-index: 99;
+}
+.featured-content p {
+  color: map-get($colors, light);
+  font-weight: 700;
+}
+.featured-content span {
+  display: block;
+  font-size: 13px;
+  color: map-get($colors, light);
+  margin-bottom: 15px;
+}
+.featured-content h2 {
+  font-size: 25px;
+  font-weight: 700;
+  color: map-get($colors, light);
+  line-height: 37px;
+  margin-bottom: 25px;
+}
+.featured-content a {
+  display: inline-block;
+  padding: 10px 25px;
+  background: map-get($colors, primary);
+  border-radius: 20px;
+  color: map-get($colors, light);
+  font-weight: 500;
+}
+.featured-content a:hover {
+  background: map-get($colors, light);
+  color: map-get($colors, dark);
+}
+.hover {
+  position: absolute;
+  z-index: 9;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  overflow: hidden;
+}
+.hover span {
+  width: 50%;
+  height: 50%;
+  background: map-get($colors, darker);
+  display: block;
+  transition: all .3s;
+  -webkit-transition: all .3s;
+  -moz-transition: all .3s;
+  opacity: 0;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  visibility: hidden;
+}
+.featured-items:hover .hover span {
+  opacity: .8;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+  visibility: visible;
+}
+.hover span.hover-one,
+.hover span.hover-two {
+  float: left;
+}
+.hover span.hover-three,
+.hover span.hover-four {
+  float: right;
+}
+.hover span.hover-one {
+  -webkit-transform: translateY(-100%);
+  transform: translateY(-100%);
+}
+.featured-items:hover .hover span.hover-one {
+  -webkit-transform: translateY(0);
+  transform: translateY(0);
+}
+.hover span.hover-two {
+  -webkit-transform: translateX(100%);
+  transform: translateX(100%);
+}
+.featured-items:hover .hover span.hover-two {
+  -webkit-transform: translateX(0);
+  transform: translateX(0);
+}
+.hover span.hover-three {
+  -webkit-transform: translateY(100%);
+  transform: translateY(100%);
+}
+.featured-items:hover .hover span.hover-three {
+  -webkit-transform: translateY(0);
+  transform: translateY(0);
+}
+.hover span.hover-four {
+  -webkit-transform: translateX(-100%);
+  transform: translateX(-100%);
+}
+.featured-items:hover .hover span.hover-four {
+  -webkit-transform: translateX(0);
+  transform: translateX(0);
+}
+
+/*------------------featured-area end------------------*/

@@ -24,3 +24,13 @@
 .idea/symfony2.xml
 .idea/vcs.xml
 .idea/workspace.xml
+
+###> symfony/webpack-encore-bundle ###
+/node_modules/
+/public/build/
+npm-debug.log
+yarn-error.log
+###< symfony/webpack-encore-bundle ###
+.idea/watcherTasks.xml
+.idea/commandlinetools/Symfony_15_07_19_16_17_s.xml
+.idea/commandlinetools/schemas/frameworkDescriptionVersion1.1.4.xsd

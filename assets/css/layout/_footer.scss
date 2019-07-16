@@ -1,0 +1,71 @@
+/*------------------footer-area start------------------*/
+.footer-logo img {
+  margin-bottom: 25px;
+}
+.footer-logo p {
+  font-weight: 300;
+  margin-bottom: 15px;
+}
+.footer-logo ul li {
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  position: relative;
+  padding-left: 80px;
+  font-size: 15px;
+}
+.footer-logo ul li:last-child {
+  margin-bottom: 0px;
+}
+.footer-logo ul li span {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.widget_recent_entries ul li {
+  overflow: hidden;
+  margin-bottom: 30px;
+}
+.widget_recent_entries ul li:last-child {
+  margin-bottom: 0px;
+}
+.widget_recent_entries-img {
+  float: left;
+  margin-right: 30px;
+}
+.widget_recent_entries-content {
+  overflow: hidden;
+  padding: 6px 0;
+}
+.widget_recent_entries-content h3 {
+  line-height: 26px;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+.widget_recent_entries-content h3 a {
+  font-size: 17px;
+  display: inline-block;
+}
+.widget_recent_entries-content h4 {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 20px;
+  font-family: Roboto;
+  margin-bottom: 0px;
+}
+.widget_recent_entries-content span {
+  display: block;
+  font-size: 13px;
+  color: map-get($colors, gray);
+}
+.footer-bottom-area {
+  padding: 20px 0px;
+  background: map-get($colors, lighter);
+}
+.copyright p span {
+  display: block;
+}
+.copyright p span a {
+  color: map-get($colors, secondary);
+}
+/*------------------footer-area end------------------*/

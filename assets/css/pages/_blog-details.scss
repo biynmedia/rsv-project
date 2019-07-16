@@ -1,0 +1,220 @@
+/*=====================================================
+                    blog-details page HERE
+=====================================================*/
+.blog-details-area .widget_recent_entries-img {
+  margin-right: 20px;
+}
+.blog-details-area .widget_recent_entries-content {
+  padding: 0px;
+}
+.blog-details-area .widget_recent_entries-content h3 a {
+  font-size: 16px;
+}
+.blog-details-area .widget_recent_entries-content h3 {
+  margin-bottom: 10px;
+}
+.blog-details-area .widget {
+  margin-bottom: 50px;
+}
+.blog-details-area .booking-wrap2 {
+  border-radius: 10px;
+  border: 1px solid map-get($colors, lightgray);
+  overflow: hidden;
+}
+.blog-details-area .booking-form {
+  width: 100%;
+}
+.blog-images {
+  position: relative;
+  margin-bottom: 45px;
+}
+.blog-audio iframe {
+  width: 100%;
+  height: 350px;
+  margin-bottom: 30px;
+}
+.blog-video iframe {
+  width: 100%;
+  height: 500px;
+  margin-bottom: 30px;
+}
+.blog-active {
+  overflow: hidden;
+}
+.blog-active .owl-nav div {
+  position: absolute;
+  left: -100px;
+  top: 50%;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  height: 45px;
+  width: 50px;
+  background: map-get($colors, light);
+  color: map-get($colors, dark);
+  font-size: 20px;
+  text-align: center;
+  line-height: 45px;
+}
+.blog-active .owl-nav div:hover {
+  color: map-get($colors, light);
+  background: map-get($colors, primary);
+}
+.blog-active:hover .owl-nav div {
+  left: 0px;
+}
+.blog-active .owl-nav div.owl-next {
+  right: -100px;
+  left: auto;
+}
+.blog-active:hover .owl-nav div.owl-next {
+  right: 0;
+}
+.blog-meta {
+  margin-bottom: 30px;
+}
+.blog-meta ul li {
+  display: inline-block;
+  font-weight: 700;
+}
+.blog-wrapper blockquote {
+  margin-bottom: 30px;
+}
+.blog-wrapper h3 {
+  font-size: 25px;
+  line-height: 38px;
+  margin-bottom: 40px;
+}
+.blog-img img {
+  width: 100%;
+}
+.blog-wrapper p {
+  margin-bottom: 30px;
+}
+.blog-wrapper ul.socil-media {
+  margin: 50px 0px 60px;
+}
+.blog-wrapper ul.socil-media li {
+  display: inline-block;
+  margin-left: 10px;
+}
+.blog-wrapper ul.socil-media li:first-child {
+  margin-left: 0px;
+}
+.blog-wrapper ul.socil-media li a {
+  height: 50px;
+  width: 172px;
+  display: block;
+  line-height: 50px;
+  text-align: center;
+  background: #3673b7;
+  color: map-get($colors, light);
+  font-size: 16px;
+  border-radius: 5px;
+}
+.blog-wrapper ul.socil-media li:nth-child(2) a {
+  background: #1da1f2;
+}
+.blog-wrapper ul.socil-media li:nth-child(3) a {
+  background: #ee4207;
+}
+.blog-wrapper ul.socil-media li:nth-child(4) a {
+  background: #00aded;
+}
+.blog-wrapper ul.socil-media li a:hover{
+  background: map-get($colors, secondary);
+}
+ol {
+  list-style: none;
+}
+.comment-main {
+  margin: 70px 0px;
+}
+h3.blog-title {
+  font-size: 25px;
+  margin-bottom: 30px;
+}
+.comment-wrapper {
+  position: relative;
+}
+.comments-reply {
+  margin-top: 10px
+}
+.comment-wrap {
+  border: 1px solid map-get($colors, lightgray);
+  padding: 30px;
+  margin-bottom: 30px;
+  border-radius: 5px;
+}
+.comment-theme {
+  float: left;
+  margin-right: 30px;
+}
+.comment-main-area {
+  overflow: hidden;
+}
+.comment-wrap1 {
+  margin-left: 70px;
+  margin-bottom: 0px;
+}
+.comment-wrap2 {
+  margin-left: 84px;
+}
+.sewl-comments-meta h4 {
+  margin-bottom: 0px;
+  font-size: 17px;
+}
+.sewl-comments-meta span {
+  display: inline-block;
+  margin-bottom: 10px;
+}
+.comment-area p {
+  margin-bottom: 25px;
+}
+.comments-reply a {
+  font-weight: 700;
+  background: map-get($colors, primary);
+  display: inline-block;
+  color: map-get($colors, light);
+  font-size: 11px;
+  padding: 5px 20px;
+  text-transform: uppercase;
+}
+.comments-reply a i {
+  margin-right: 5px;
+}
+.comments-reply a:hover {
+  color: #222;
+}
+.comment.even.thread-even.depth-1 {
+  margin-top: 40px;
+}
+.sewl-form-inputs input,
+.sewl-form-textarea textarea {
+  width: 100%;
+  height: 50px;
+  border: 1px solid #eee;
+  padding-left: 20px;
+  margin-bottom: 30px;
+  border-radius: 5px;
+}
+.sewl-form-textarea textarea {
+  height: 230px;
+}
+.form-submit input {
+  height: 50px;
+  width: 180px;
+  text-align: center;
+  line-height: 50px;
+  border: none;
+  background: #222;
+  text-transform: uppercase;
+  color: map-get($colors, light);
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.form-submit input:hover {
+  background: map-get($colors, primary);
+}

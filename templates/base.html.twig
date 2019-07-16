@@ -1,12 +1,30 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+<!doctype html>
+
+<!--
+  ____      _        _     _ _                   __     __        _ _
+ |  _ \ ___| |_ __ _| |__ | (_)_ __   ___  __ _  \ \   / /__ _ __(_) |_ ___
+ | |_) / _ \ __/ _` | '_ \| | | '__| / __|/ _` |  \ \ / / _ \ '__| | __/ _ \
+ |  _ <  __/ || (_| | |_) | | | |    \__ \ (_| |   \ V /  __/ |  | | ||  __/
+ |_| \_\___|\__\__,_|_.__/|_|_|_|    |___/\__,_|    \_/ \___|_|  |_|\__\___|
+
+-->
+
+<html class="no-js" lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>{% block title %}{% block page_title '' %} | {% block app_title 'Rétablir sa Vérité !' %}{% endblock %}</title>
+    {% block stylesheets '' %}
+    {% block final_stylesheets '' %}
+    {% block head_javascripts '' %}
+    <meta name="description" content="{% block meta_description %}Apporter des réponses claires et biblique sur des questions de tous les jours.{% endblock %}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/png" href="{{ asset('build/images/favicon.png') }}">
+</head>
+
+<body>
+    {% block body '' %}
+    {% block javascripts '' %}
+    {% block final_javascripts '' %}
+</body>
 </html>

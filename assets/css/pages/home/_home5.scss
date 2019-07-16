@@ -1,0 +1,328 @@
+/*=====================================================
+                    home5 style here
+=====================================================*/
+.slider-item2 {
+  position: relative;
+}
+.slider-item2 img {
+  visibility: hidden;
+}
+.slider-item2:before {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: map-get($colors, darker);
+  content: "";
+  z-index: 9;
+  opacity: .5;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+}
+.slider-content2 {
+  position: absolute;
+  left: 70px;
+  bottom: 205px;
+  width: 45%;
+  z-index: 999;
+}
+.slider-content2 p {
+  color: map-get($colors, light);
+  font-weight: 700;
+}
+.slider-content2 span {
+  display: block;
+  color: map-get($colors, light);
+  margin-bottom: 20px;
+}
+.slider-content2 h2 {
+  line-height: 40px;
+  color: map-get($colors, light);
+  font-weight: 700;
+  font-size: 30px;
+  margin-bottom: 30px;
+}
+.slider-content2 a {
+  display: inline-block;
+  padding: 10px 30px;
+  border-radius: 20px;
+  background: map-get($colors, primary);
+  color: map-get($colors, light);
+}
+.slider-content2 a:hover {
+  background: map-get($colors, light);
+  color: map-get($colors, dark);
+}
+.next-prev-style .owl-nav div {
+  position: absolute;
+  left: -100px;
+  top: 50%;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  height: 40px;
+  width: 40px;
+  background: map-get($colors, dark);
+  color: map-get($colors, light);
+  line-height: 40px;
+  text-align: center;
+  border-radius: 50%;
+}
+.next-prev-style .owl-nav div:hover {
+  background: map-get($colors, primary);
+}
+.next-prev-style .owl-nav div.owl-next {
+  left: auto;
+  right: -100px;
+}
+.popular-post-area2 {
+  margin-top: -95px;
+  position: relative;
+  z-index: 999;
+}
+.post {
+  padding: 0px 70px;
+}
+.post-area3 .widget {
+  padding: 40px 30px;
+  border: 1px solid map-get($colors, lightgray);
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 40px;
+}
+.post-area3 .booking-wrap2 {
+  border: 1px solid map-get($colors, lightgray);
+  overflow: hidden;
+  border-radius: 10px;
+}
+.post-area3 .booking-form {
+  width: 100%;
+}
+.post-area3 .post-img {
+  height: auto !important;
+}
+
+/*--------breadcumb-area start--------*/
+.breadcumb-area {
+  padding: 70px 0px;
+  background: map-get($colors, lighter);
+}
+.breadcumb-wrap h2 {
+  font-weight: 800;
+}
+.breadcumb-wrap ul li {
+  font-weight: 700;
+  display: inline-block;
+}
+.breadcumb-wrap ul li.active,
+.breadcumb-wrap ul li a:hover {
+  color: map-get($colors, primary);
+}
+/*--------breadcumb-area end--------*/
+
+/*--------about-area start--------*/
+.about-img {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 45px;
+  border-radius: 10px;
+}
+.about-img a {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  height: 55px;
+  width: 55px;
+  background: map-get($colors, primary);
+  font-size: 20px;
+  line-height: 55px;
+  border-radius: 50%;
+  text-align: center;
+  color: map-get($colors, light);
+}
+.about-img a:hover {
+  background: map-get($colors, light);
+  color: map-get($colors, primary);
+}
+.about-img h3 {
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 100%;
+  bottom: 40px;
+  font-size: 20px;
+  line-height: 30px;
+  color: map-get($colors, light);
+  text-align: center;
+}
+.about-img h3 span {
+  display: block;
+}
+.about-content h3 {
+  line-height: 38px;
+  font-size: 25px;
+  margin-bottom: 30px;
+}
+.about-content h3 span {
+  display: block;
+}
+.about-content p {
+  line-height: 27px;
+  font-size: 15px;
+  margin-bottom: 30px;
+}
+blockquote {
+  font-weight: 700;
+  font-style: italic;
+  font-size: 20px;
+  line-height: 35px;
+  display: block;
+  margin-bottom: 60px;
+}
+.about-images {
+  border-radius: 10px;
+  overflow: hidden;
+}
+.about-images img {
+  visibility: hidden;
+}
+.about-text p {
+  margin-bottom: 20px;
+}
+/*--------about-area end--------*/
+
+/*--------team-area start--------*/
+.team-title {
+  margin-bottom: 50px;
+}
+.team-title h2 {
+  font-size: 25px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+.team-img {
+  position: relative;
+  overflow: hidden;
+}
+.team-content {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  bottom: 0;
+  text-align: center;
+  padding: 30px 0px;
+  background: rgba(255, 144, 0, .8);
+  visibility: hidden;
+  -webkit-transform: scaleY(0);
+  transform: scaleY(0);
+  -webkit-transform-origin: bottom;
+  transform-origin: bottom;
+}
+.team-img:hover .team-content {
+  -webkit-transform: scaleY(1);
+  transform: scaleY(1);
+  visibility: visible;
+}
+.team-content h3 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 0px;
+  color: map-get($colors, light);
+  line-height: 30px;
+  -webkit-transition: all .6s;
+  transition: all .6s;
+  margin-left: -30px;
+}
+.team-img:hover .team-content h3 {
+  margin-left: 0px;
+}
+.team-content p {
+  color: map-get($colors, light);
+  -webkit-transition: all .6s;
+  transition: all .6s;
+  font-size: 14px;
+  font-weight: 300;
+  margin-right: -30px;
+}
+.team-img:hover .team-content p {
+  margin-right: 0px;
+}
+.booking-area2 .booking-content {
+  padding: 0px 0px 80px;
+}
+/*--------team-area end--------*/
+
+/*--------blog-area start--------*/
+.blog-area {
+  padding: 80px 0px 50px;
+}
+.blog-wrap {
+  margin-bottom: 30px;
+  border: 1px solid map-get($colors, lightgray);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.blog-image {
+  position: relative;
+}
+.blog-image ul {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  outline: 2px solid map-get($colors, light);
+  outline-offset: 3px;
+  height: 60px;
+  width: 50px;
+  text-align: center;
+  background: map-get($colors, light);
+  padding: 8px 0px;
+}
+.blog-image ul li {
+  display: inline-block;
+  position: relative;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 12px;
+  display: block;
+}
+.blog-image ul li:first-child {
+  color: map-get($colors, primary);
+  font-size: 18px;
+}
+.blog-image iframe {
+  height: 235px;
+  width: 100%;
+}
+.blog-image img {
+  width: 100%;
+}
+.blog-content {
+  padding: 30px 20px;
+}
+.blog-content .blog-meta {
+  margin: 0px 0 20px;
+}
+.blog-content .blog-meta ul li {
+  margin-right: 10px;
+}
+.blog-content .blog-meta ul li:last-child {
+  margin-right: 0px;
+}
+.blog-content .blog-meta ul li a {
+  font-weight: 400;
+  color: map-get($colors, lightestgray);
+}
+.blog-content .blog-meta ul li a i {
+  font-size: 12px;
+}
+.blog-content h3,
+.blog-content h3 a {
+  font-size: 20px;
+  line-height: 28px;
+}
+.blog-content p {
+  margin-top: 20px;
+}
+/*--------blog-area end--------*/

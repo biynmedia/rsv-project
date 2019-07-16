@@ -1,0 +1,122 @@
+/*------------------post-area strat------------------*/
+.section-title h2 {
+  font-weight: 800;
+  margin-bottom: 40px;
+  padding-bottom: 20px;
+  line-height: 22px;
+  border-bottom: 1px solid map-get($colors, lightgray);
+}
+.post-wrap {
+  overflow: hidden;
+  border: 1px solid map-get($colors, lightgray);
+  border-radius: 10px;
+  margin-bottom: 30px;
+}
+.post-img {
+  float: left;
+  margin-right: 40px;
+  position: relative;
+  border-radius: 8px;
+}
+.post-img img {
+  visibility: hidden;
+}
+.post-img:before {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  content: "";
+  background: map-get($colors, darker);
+  top: 0;
+  border-radius: 8px;
+  opacity: 0;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+}
+.post-wrap:hover .post-img:before {
+  opacity: .5;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+}
+.post-content {
+  position: relative;
+  overflow: hidden;
+  padding: 25px 0px;
+}
+.post-content h3 {
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+.post-content h3 a {
+  font-size: 20px;
+}
+.post-content p {
+  font-weight: 700;
+}
+.post-content span {
+  display: block;
+  font-size: 13px;
+  color: map-get($colors, lightergray);
+}
+.pagination-wrapper {
+  margin-top: 20px;
+}
+.pagination-wrapper ul li {
+  display: inline-block;
+  margin: 0px 2px;
+}
+.pagination-wrapper ul li a,
+.pagination-wrapper ul li span {
+  height: 40px;
+  width: 40px;
+  display: block;
+  line-height: 40px;
+  background: map-get($colors, dark);
+  color: map-get($colors, light);
+  font-weight: 700;
+  border-radius: 50%;
+}
+.pagination-wrapper ul li a:hover,
+.pagination-wrapper ul li span {
+  background: map-get($colors, secondary);
+}
+/*------------------post-area end------------------*/
+
+/*------------------tanding-post-area end------------------*/
+.tanding-post-area .featured-items {
+  width: 100%;
+  display: block;
+}
+.tanding-post-area .featured-content {
+  width: 85%;
+}
+.tanding-wrap {
+  position: relative;
+  overflow: hidden;
+  border-radius: 5px;
+}
+.tanding-content {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding: 0px 70px;
+}
+.tanding-content h2 {
+  font-size: 20px;
+  font-weight: 700;
+  color: map-get($colors, light);
+  margin-bottom: 0px;
+  font-family: Roboto;
+}
+/*------------------tanding-post-area end------------------*/

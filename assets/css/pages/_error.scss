@@ -1,0 +1,31 @@
+/*-----------------404 page start-----------------*/
+.error-area {
+  padding: 130px 0px;
+  background: map-get($colors, light);
+}
+.error-wrap {
+  text-align: center;
+}
+.error-wrap img {
+  margin-bottom: 30px;
+}
+.error-wrap h3 {
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.error-wrap p {
+  margin-bottom: 30px;
+}
+.error-wrap a {
+  display: inline-block;
+  padding: 10px 30px;
+  background: map-get($colors, primary);
+  color: map-get($colors, light);
+  font-weight: 700;
+  text-transform: uppercase;
+  border-radius: 5px;
+}
+.error-wrap a:hover {
+  background: #222;
+}
+/*-----------------404 page end-----------------*/

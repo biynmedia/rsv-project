@@ -1,0 +1,174 @@
+/*========================================================================================================
+                                        defolt-css here
+ ========================================================================================================*/
+
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,500i,700');
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 15px;
+  line-height: 25px;
+  color: map-get($colors, dark);
+  font-weight: 400;
+}
+.floatleft {
+  float: left;
+}
+.floatright {
+  float: right;
+}
+img {
+  max-width: 100%;
+  height: auto
+}
+.fix {
+  overflow: hidden
+}
+p {
+  margin: 0px;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: map-get($colors, dark);
+  margin-bottom: 10px;
+  font-weight: 700;
+  margin-top: 0px;
+}
+input:focus,
+select:focus {
+  outline: none;
+}
+input,
+button {
+  transition: all .3s;
+  -webkit-transition: all .3s;
+  -moz-transition: all .3s;
+}
+button {
+  cursor: pointer;
+}
+a {
+  -webkit-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+  -webkit-transition: all .3s;
+  -moz-transition: all .3s;
+  text-decoration: none;
+  color: map-get($colors, dark);
+  font-size: 14px;
+}
+i {
+  -webkit-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+  -moz-transition: all .3s;
+}
+a:hover {
+  color: map-get($colors, primary);
+}
+a:active,
+a:hover,
+a:focus {
+  outline: none;
+  text-decoration: none;
+}
+button:focus {
+  outline: none;
+}
+ul {
+  list-style: outside none none;
+  margin: 0;
+  padding: 0;
+}
+:before,
+:after {
+  transition: all .3s;
+  -webkit-transition: all .3s;
+  -moz-transition: all .3s;
+}
+div {
+  transition: all .3s;
+  -webkit-transition: all .3s;
+  -moz-transition: all .3s;
+}
+.black-opacity {
+  position: relative;
+  z-index: 9;
+}
+.black-opacity:before {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  content: "";
+  opacity: .90;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+}
+.bg-img-1 {
+  background: url(../../images/bg/1.jpg) no-repeat center center / cover
+}
+.bg-img-2 {
+  background: url(../../images/bg/2.jpg) no-repeat center center / cover
+}
+.bg-img-3 {
+  background: url(../../images/bg/3.jpg) no-repeat center center / cover
+}
+.bg-img-4 {
+  background: url(../../images/bg/4.jpg) no-repeat center center / cover
+}
+.bg-img-5 {
+  background: url(../../images/bg/6.jpg) no-repeat center center / cover
+}
+.bg-img-6 {
+  background: url(../../images/bg/7.jpg) no-repeat center center / cover
+}
+.pt-80 {
+  padding-top: 80px;
+}
+.pb-80 {
+  padding-bottom: 80px;
+}
+.ptb-80 {
+  padding: 80px 0;
+}
+.mb-40 {
+  margin-bottom: 40px;
+}
+.mb-60 {
+  margin-bottom: 60px;
+}
+.mb-30 {
+  margin-bottom: 30px;
+}
+.mb-80 {
+  margin-bottom: 80px;
+}
+.bg-1 {
+  background: map-get($colors, dark);
+}
+.bg-fff {
+  background: #fff;
+}
+a#scrollUp {
+  position: fixed;
+  right: 10px;
+  bottom: 20px;
+  height: 45px;
+  width: 45px;
+  background: map-get($colors, dark);
+  text-align: center;
+  line-height: 45px;
+  color: #fff;
+  font-size: 12px;
+  border-radius: 5px;
+}
+a#scrollUp:hover {
+  background: map-get($colors, primary);
+}
