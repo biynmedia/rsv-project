@@ -1,0 +1,108 @@
+{% extends "base.html.twig" %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('admin') }}
+{% endblock %}
+
+{% block head_javascripts %}
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+{% endblock %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('admin') }}
+{% endblock %}
+
+{% block final_javascripts %}
+    <!--stickey kit -->
+    {#    <script src="../assets/node_modules/sticky-kit-master/dist/sticky-kit.min.js"></script>#}
+    {#    <script src="../assets/node_modules/sparkline/jquery.sparkline.min.js"></script>#}
+{% endblock %}
+
+
+{% block body %}
+
+<!-- ============================================================== -->
+<!-- Preloader - style you can find in spinners.css -->
+<!-- ============================================================== -->
+    <div class="preloader">
+        <div class="loader">
+            <div class="loader__figure"></div>
+            <p class="loader__label">Rétablir sa Vérité</p>
+        </div>
+    </div>
+
+<!-- ============================================================== -->
+<!-- Main wrapper - style you can find in pages.scss -->
+<!-- ============================================================== -->
+<div id="main-wrapper">
+
+    {% include 'admin/components/_topbar-header.html.twig' %}
+
+    {% include 'admin/components/_left-sidebar.html.twig' %}
+
+    <!-- ============================================================== -->
+    <!-- Page wrapper  -->
+    <!-- ============================================================== -->
+    <div class="page-wrapper">
+        <!-- ============================================================== -->
+        <!-- Container fluid  -->
+        <!-- ============================================================== -->
+        <div class="container-fluid">
+
+            <!-- ============================================================== -->
+            <!-- Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            {% block breadcrumb %}
+                <div class="row page-titles">
+                    <div class="col-md-5 align-self-center">
+                        <h4 class="text-themecolor">Starter Page</h4>
+                    </div>
+                    <div class="col-md-7 align-self-center text-right">
+                        <div class="d-flex justify-content-end align-items-center">
+                            <ol class="breadcrumb">
+                                {% block breabcrumb_item %}
+                                    <li class="breadcrumb-item"><a href="{{ path('admin_dashboard') }}">Dashboard</a>
+                                    </li>
+                                    {#<li class="breadcrumb-item active">Starter Page</li>#}
+                                {% endblock %}
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            {% endblock %}
+            <!-- ============================================================== -->
+            <!-- End Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+
+            {% block content '' %}
+
+            {% include 'admin/components/_right-sidebar.html.twig' %}
+
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Container fluid  -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Page wrapper  -->
+    <!-- ============================================================== -->
+
+    <!-- ============================================================== -->
+    <!-- footer -->
+    <!-- ============================================================== -->
+    {% block footer %}
+        <footer class="footer">
+            © {{ "now"|date("Y") }} Rétablir sa Vérité - Biyn Média
+        </footer>
+    {% endblock %}
+    <!-- ============================================================== -->
+    <!-- End footer -->
+    <!-- ============================================================== -->
+
+</div>
+<!-- ============================================================== -->
+<!-- End Wrapper -->
+<!-- ============================================================== -->
+{% endblock %}
+

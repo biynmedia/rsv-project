@@ -5,6 +5,7 @@
         "bootstrap": "^4.3.1",
         "core-js": "^3.0.0",
         "font-awesome": "^4.7.0",
+        "icomoon": "^1.0.0",
         "imagesloaded": "^4.1.4",
         "isotope-layout": "^3.0.6",
         "jquery": "^3.4.1",
@@ -13,9 +14,13 @@
         "modernizr": "^3.7.1",
         "node-sass": "^4.12.0",
         "owl.carousel2": "^2.2.1",
+        "perfect-scrollbar": "^1.4.0",
         "popper.js": "^1.15.0",
         "sass-loader": "7.0.1",
+        "simple-line-icons": "^2.4.1",
         "slicknav": "^1.0.8",
+        "themify-icons": "^1.0.0",
+        "weathericons": "^2.1.0",
         "webpack-notifier": "^1.6.0",
         "wow.js": "^1.2.2"
     },
@@ -26,5 +31,6 @@
         "dev": "encore dev",
         "watch": "encore dev --watch",
         "build": "encore production --progress"
-    }
+    },
+    "dependencies": {}
 }

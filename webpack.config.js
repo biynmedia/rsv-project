@@ -23,7 +23,8 @@ Encore
      * Each entry will result in one JavaScript file (e.g. app.js)
      * and one CSS file (e.g. app.css) if your JavaScript imports CSS.
      */
-    .addEntry('app', './assets/js/app.js')
+    .addEntry('app', './assets/app/js/app.js')
+    .addEntry('admin', './assets/admin/js/admin.js')
     //.addEntry('page1', './assets/js/page1.js')
     //.addEntry('page2', './assets/js/page2.js')
 
@@ -55,10 +56,16 @@ Encore
 
     // enables Sass/SCSS support
     .enableSassLoader()
-    .copyFiles({
-        from: './assets/images',
-        to: 'images/[path][name].[hash:8].[ext]'
-    })
+    .copyFiles([
+        {
+            from: './assets/app/images',
+            to: 'images/app/[path][name].[hash:8].[ext]'
+        },
+        {
+            from: './assets/admin/images',
+            to: 'images/admin/[path][name].[hash:8].[ext]'
+        }
+    ])
 
     // uncomment if you use TypeScript
     //.enableTypeScriptLoader()
