@@ -4,17 +4,29 @@
             <div class="row">
                 <div class="col-md-6 col-12">
                     <div class="header-top-left">
-                        <p>Always post powefull content.</p>
+                        <p>RSV : Rétablir la vérité de la Parole de Dieu</p>
                     </div>
                 </div>
                 <div class="col-md-6 col-12">
                     <div class="header-top-right text-right">
                         <ul>
-                            <li><a href="#">Facebook</a></li>
-                            <li><a href="#">Twitter</a></li>
-                            <li><a href="#">Behance</a></li>
-                            <li><a href="#">Google+</a></li>
-                            <li><a href="#">Dribbble</a></li>
+                            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                                <li><a href="#">Bonjour {{ app.user.firstname }}</a></li>
+                                {% if is_granted('ROLE_ADMIN') %}
+                                    <li><a href="{{ path('admin_dashboard') }}"><i class="fa fa-sitemap" aria-hidden="true"></i> Administration</a></li>
+                                {% elseif is_granted('ROLE_MINISTRY') %}
+                                    <li><a href="#"><i class="fa fa-users" aria-hidden="true"></i> Espace Ministère</a></li>
+                                {% else %}
+                                    <li><a href="#"><i class="fa fa-user-circle" aria-hidden="true"></i> Espace Abonnés</a></li>
+                                {% endif %}
+                                <li><a href="{{ path('security_logout') }}"><i class="fa fa-sign-out" aria-hidden="true"></i> Déconnexion</a></li>
+                            {% else %}
+                                <li><a href="{{ path('security_login') }}"><i class="fa fa-sign-in" aria-hidden="true"></i> Connexion</a></li>
+                                <li><a href="{{ path('user_register') }}"><i class="fa fa-user-plus" aria-hidden="true"></i> Inscription</a></li>
+                            {% endif %}
+                            <li><a href="#"><i class="fa fa-facebook-square" aria-hidden="true"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                            <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
                         </ul>
                     </div>
                 </div>
@@ -27,48 +39,16 @@
                 <div class="col-md-5 col-sm-12 d-none d-lg-block">
                     <div class="mainmenu">
                         <ul id="navigation">
-                            <li class="active"><a href="javascript:void(0)">Home <i
-                                            class="fa fa-angle-down"></i></a>
+                            <li class="active"><a href="{{ path('rsv_home') }}">Accueil</a></li>
+                            <li><a href="javascript:void(0)">Les sujets <i class="fa fa-angle-down"></i></a>
                                 <ul>
-                                    <li><a href="index.html">Home One </a></li>
-                                    <li><a href="index2.html">Home Two</a></li>
-                                    <li><a href="index3.html">Home Three <i
-                                                    class="fa fa-angle-right pull-right"></i></a>
-                                        <ul>
-                                            <li><a href="javascript:void(0)">Submenu One</a></li>
-                                            <li class="active"><a href="javascript:void(0)">Submenu Two</a></li>
-                                            <li><a href="javascript:void(0)">Submenu Three</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="active"><a href="index4.html">Home Four</a></li>
-                                    <li><a href="index5.html">Home Five</a></li>
+                                    <li><a href="javascript:void(0)">Blog Page</a></li>
+                                    <li><a href="javascript:void(0)">Blog Left</a></li>
+                                    <li><a href="javascript:void(0)">Blog Right</a></li>
                                 </ul>
                             </li>
-                            <li><a href="javascript:void(0)">blog <i class="fa fa-angle-down"></i></a>
-                                <ul>
-                                    <li><a href="blog.html">Blog Page</a></li>
-                                    <li><a href="blog-left.html">Blog Left</a></li>
-                                    <li><a href="blog-right.html">Blog Right</a></li>
-                                    <li><a href="javascript:void(0)">Blog Details<i
-                                                    class="fa fa-angle-right pull-right"></i></a>
-                                        <ul>
-                                            <li><a href="blog-details.html">Blog Images</a></li>
-                                            <li><a href="blog-gallary.html">Blog Gallary</a></li>
-                                            <li><a href="blog-video.html">Blog Video</a></li>
-                                            <li><a href="blog-audio.html">Blog Audio</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li><a href="about.html">About</a></li>
-                            <li><a href="javascript:void(0)">Pages <i class="fa fa-angle-down"></i></a>
-                                <ul>
-                                    <li><a href="about.html">About</a></li>
-                                    <li><a href="faq.html">Faq</a></li>
-                                    <li><a href="404.html">404 Page</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="contact.html">Contact</a></li>
+                            <li><a href="javascript:void(0)">A Propos</a></li>
+                            <li><a href="javascript:void(0)">Contact</a></li>
                         </ul>
                     </div>
                 </div>
@@ -82,7 +62,7 @@
                 <div class="col-md-8 col-lg-5 col-sm-9 col-9">
                     <div class="form-style search-form">
                         <form action="#">
-                            <input type="text" placeholder="Search here...">
+                            <input type="text" placeholder="Rechercher un sujet...">
                             <button><i class="fa fa-search"></i></button>
                         </form>
                     </div>

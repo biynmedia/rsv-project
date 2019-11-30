@@ -12,7 +12,7 @@ class RsvController extends AbstractController
 
     /**
      * Page d'Accueil
-     * @Route("/", name="default_home", methods={"GET"})
+     * @Route("/", name="rsv_home", methods={"GET"})
      */
     public function home()
     {

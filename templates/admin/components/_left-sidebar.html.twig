@@ -10,23 +10,30 @@
                 <li class="user-pro"><a class="has-arrow waves-effect waves-dark" href="javascript:void(0)"
                                         aria-expanded="false"><img src="{{ asset('build/images/admin/users/1.jpg') }}"
                                                                    alt="user-img" class="img-circle"><span
-                                class="hide-menu">Mark Jeckson</span></a>
+                                class="hide-menu">{{ app.user.firstname }}</span></a>
                     <ul aria-expanded="false" class="collapse">
-                        <li><a href="javascript:void(0)"><i class="ti-user"></i> My Profile</a></li>
-                        <li><a href="javascript:void(0)"><i class="ti-wallet"></i> My Balance</a></li>
-                        <li><a href="javascript:void(0)"><i class="ti-email"></i> Inbox</a></li>
-                        <li><a href="javascript:void(0)"><i class="ti-settings"></i> Account Setting</a></li>
-                        <li><a href="javascript:void(0)"><i class="fa fa-power-off"></i> Logout</a></li>
+                        <li><a href="javascript:void(0)"><i class="ti-user"></i> Mon Profil</a></li>
+                        <li><a href="{{ path('security_logout') }}"><i class="fa fa-power-off"></i> Déconnexion</a></li>
                     </ul>
                 </li>
-                <li class="nav-small-cap">--- ADMINISTRATEUR</li>
+                <li class="nav-small-cap">--- ADMINISTRATION</li>
                 <li>
                     <a class="waves-effect waves-dark" href="{{ path('admin_dashboard') }}" aria-expanded="false">
                         <i class="icon-speedometer"></i> <span class="hide-menu">Dashboard</span>
                     </a>
                 </li>
+                <li>
+                    <a class="waves-effect waves-dark" href="#" aria-expanded="false">
+                        <i class="icon-speedometer"></i> <span class="hide-menu">Créer un Sujet</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="waves-effect waves-dark" href="#" aria-expanded="false">
+                        <i class="icon-speedometer"></i> <span class="hide-menu">Voir les Sujets</span>
+                    </a>
+                </li>
 
-                <li><a class="waves-effect waves-dark" href="#" aria-expanded="false"><i
+                <li><a class="waves-effect waves-dark" href="{{ path('security_logout') }}" aria-expanded="false"><i
                                 class="far fa-circle text-success"></i><span
                                 class="hide-menu">Déconnexion</span></a></li>
             </ul>
