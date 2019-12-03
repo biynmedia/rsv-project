@@ -7,30 +7,40 @@
         <!-- Sidebar navigation-->
         <nav class="sidebar-nav">
             <ul id="sidebarnav">
-                <li class="user-pro"><a class="has-arrow waves-effect waves-dark" href="javascript:void(0)"
-                                        aria-expanded="false"><img src="{{ asset('build/images/admin/users/1.jpg') }}"
-                                                                   alt="user-img" class="img-circle"><span
-                                class="hide-menu">{{ app.user.firstname }}</span></a>
-                    <ul aria-expanded="false" class="collapse">
-                        <li><a href="javascript:void(0)"><i class="ti-user"></i> Mon Profil</a></li>
-                        <li><a href="{{ path('security_logout') }}"><i class="fa fa-power-off"></i> Déconnexion</a></li>
-                    </ul>
-                </li>
-                <li class="nav-small-cap">--- ADMINISTRATION</li>
+                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                    <li class="user-pro"><a class="has-arrow waves-effect waves-dark" href="javascript:void(0)"
+                                            aria-expanded="false"><img
+                                    src="{{ asset('build/images/admin/users/1.jpg') }}"
+                                    alt="user-img" class="img-circle"><span
+                                    class="hide-menu">{{ app.user.firstname }}</span></a>
+                        <ul aria-expanded="false" class="collapse">
+                            <li><a href="javascript:void(0)"><i class="ti-user"></i> Mon Profil</a></li>
+                            <li><a href="{{ path('security_logout') }}"><i class="fa fa-power-off"></i> Déconnexion</a>
+                            </li>
+                        </ul>
+                    </li>
+                {% endif %}
+                {#                <li class="nav-small-cap">--- ADMINISTRATION</li>#}
                 <li>
                     <a class="waves-effect waves-dark" href="{{ path('admin_dashboard') }}" aria-expanded="false">
                         <i class="icon-speedometer"></i> <span class="hide-menu">Dashboard</span>
                     </a>
                 </li>
                 <li>
-                    <a class="waves-effect waves-dark" href="#" aria-expanded="false">
-                        <i class="icon-speedometer"></i> <span class="hide-menu">Créer un Sujet</span>
-                    </a>
+                    <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
+                        <i class="ti-write"></i><span class="hide-menu">Les Sujets</span></a>
+                        <ul aria-expanded="false" class="collapse">
+                            <li><a href="{{ path('topic_create') }}">Créer un sujet</a></li>
+                            <li><a href="{{ path('admin_topics') }}">Consulter les sujets</a></li>
+                        </ul>
                 </li>
                 <li>
-                    <a class="waves-effect waves-dark" href="#" aria-expanded="false">
-                        <i class="icon-speedometer"></i> <span class="hide-menu">Voir les Sujets</span>
-                    </a>
+                    <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
+                        <i class="ti-comments"></i><span class="hide-menu">Les Commentaires</span></a>
+                        <ul aria-expanded="false" class="collapse">
+                            <li><a href="#">En attente</a></li>
+                            <li><a href="#">Signalement</a></li>
+                        </ul>
                 </li>
 
                 <li><a class="waves-effect waves-dark" href="{{ path('security_logout') }}" aria-expanded="false"><i

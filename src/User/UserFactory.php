@@ -21,7 +21,7 @@ class UserFactory
      * @param UserRequest $req
      * @return User
      */
-    public function createFromUserRequest(UserRequest $req)
+    public function createFromUserRequest(UserRequest $req): User
     {
         $user = new User();
         $user->setFirstname($req->firstname)

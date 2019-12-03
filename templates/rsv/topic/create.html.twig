@@ -1,0 +1,43 @@
+{% extends "admin_layout.html.twig" %}
+
+{% block page_title %}
+    Créer un Sujet
+{% endblock %}
+
+{% block breabcrumb_page %}
+    Créer un nouveau sujet
+{% endblock %}
+
+{% block breabcrumb_item %}
+    <li class="breadcrumb-item"><a href="{{ path('admin_dashboard') }}">Dashboard</a></li>
+    <li class="breadcrumb-item"><a href="javascript:void(0)">Sujet</a></li>
+    <li class="breadcrumb-item active">Créer un sujet</li>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-12 mx-auto">
+                <div class="card card-body">
+                    <h4 class="card-title">Créer un sujet</h4>
+                    <h5 class="card-subtitle"> Soumettre un nouveau sujet </h5>
+                    {{ form(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block final_stylesheets %}
+    {{ encore_entry_link_tags('topic') }}
+{% endblock %}
+
+{% block final_javascripts %}
+    {{ encore_entry_script_tags('topic') }}
+    <script src="https://cdn.ckeditor.com/ckeditor5/15.0.0/classic/ckeditor.js"></script>
+    <script>
+        // -- CkEditor
+        ClassicEditor.create(document.querySelector('#rsv_topic_summary'));
+        ClassicEditor.create(document.querySelector('#rsv_topic_content'));
+    </script>
+{% endblock %}

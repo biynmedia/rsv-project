@@ -1,4 +1,7 @@
 {
+    "behat/transliterator": {
+        "version": "v1.2.0"
+    },
     "doctrine/annotations": {
         "version": "1.0",
         "recipe": {
@@ -517,11 +520,26 @@
             "./webpack.config.js"
         ]
     },
+    "symfony/workflow": {
+        "version": "3.3",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "3.3",
+            "ref": "3b2f8ca32a07fcb00f899649053943fa3d8bbfb6"
+        },
+        "files": [
+            "./config/packages/workflow.yaml"
+        ]
+    },
     "symfony/yaml": {
         "version": "v4.3.2"
     },
     "twig/twig": {
         "version": "v2.11.3"
+    },
+    "verot/class.upload.php": {
+        "version": "2.0.3"
     },
     "webmozart/assert": {
         "version": "1.4.0"

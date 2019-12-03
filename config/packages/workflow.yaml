@@ -1,0 +1,36 @@
+framework:
+    workflows:
+        rsv_topic:
+            type: 'state_machine'
+            marking_store:
+                type: 'method'
+                property: 'status'
+            supports:
+                - App\Entity\Topic
+                - App\Topic\TopicRequest
+            initial_marking: draft
+            places:
+                - draft
+                - review
+                - consultation
+                - published
+                - unpublished
+            transitions:
+                review:
+                    from: draft
+                    to:   review
+                approval:
+                    from: review
+                    to:   consultation
+                publish:
+                    from: consultation
+                    to:   published
+                cancel:
+                    from: consultation
+                    to:   unpublished
+                unpublish:
+                    from: published
+                    to:   unpublished
+                online:
+                    from: unpublished
+                    to:   published

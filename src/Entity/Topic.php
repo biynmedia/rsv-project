@@ -85,14 +85,13 @@ class Topic
     private $comments;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Answer", mappedBy="topic")
+     * @ORM\OneToOne(targetEntity="App\Entity\Answer", inversedBy="topic", cascade={"persist", "remove"})
      */
-    private $answers;
+    private $answer;
 
     public function __construct()
     {
         $this->comments = new ArrayCollection();
-        $this->answers = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -275,33 +274,14 @@ class Topic
         return $this;
     }
 
-    /**
-     * @return Collection|Answer[]
-     */
-    public function getAnswers(): Collection
+    public function getAnswer(): ?Answer
     {
-        return $this->answers;
+        return $this->answer;
     }
 
-    public function addAnswer(Answer $answer): self
+    public function setAnswer(?Answer $answer): self
     {
-        if (!$this->answers->contains($answer)) {
-            $this->answers[] = $answer;
-            $answer->setTopic($this);
-        }
-
-        return $this;
-    }
-
-    public function removeAnswer(Answer $answer): self
-    {
-        if ($this->answers->contains($answer)) {
-            $this->answers->removeElement($answer);
-            // set the owning side to null (unless already changed)
-            if ($answer->getTopic() === $this) {
-                $answer->setTopic(null);
-            }
-        }
+        $this->answer = $answer;
 
         return $this;
     }

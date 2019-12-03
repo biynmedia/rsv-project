@@ -1,0 +1,275 @@
+{% extends "admin_layout.html.twig" %}
+
+{% block page_title %}
+    {{ topic.name }}
+{% endblock %}
+
+{% block breabcrumb_page %}
+    {{ topic.name }}
+{% endblock %}
+
+{% block breabcrumb_item %}
+    <li class="breadcrumb-item"><a href="{{ path('admin_dashboard') }}">Dashboard</a></li>
+    <li class="breadcrumb-item"><a href="{{ path('admin_topics') }}">Les Sujets</a></li>
+    <li class="breadcrumb-item active">{{ topic.name }}</li>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <!-- ============================================================== -->
+        <!-- Start Page Content -->
+        <!-- ============================================================== -->
+        <!-- Row -->
+        <div class="row">
+            <!-- Column -->
+            <div class="col-lg-4 col-xlg-3 col-md-5">
+                <div class="card"><img class="card-img" src="{{ asset('uploads/470/' ~ topic.image ) }}" height="456"
+                                       alt="Card image">
+                    <div class="card-img-overlay card-inverse text-white social-profile d-flex justify-content-center">
+                        <div class="align-self-center">
+                            <h4 class="card-title">{{ topic.name }}</h4>
+                            {#                            <h6 class="text-danger card-subtitle">{{ topic.status }}</h6>#}
+                            <p class="text-white">{{ topic.summary | striptags }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <small class="text-muted">Proposé par</small>
+                        <h6>{{ topic.user.firstname ~ ' ' ~ topic.user.lastname }}</h6>
+                        <small class="text-muted p-t-30 db">Catégorie</small>
+                        <h6>{{ topic.category.name }}</h6>
+                        <small class="text-muted p-t-30 db">Illustration</small>
+                        <div class="map-box">
+                            <img class="img-fluid" src="{{ asset('uploads/470/' ~ topic.image ) }}"
+                                 alt="{{ topic.name }}">
+                        </div>
+                        {% if is_granted('ROLE_MINISTRY') and (app.user.id == topic.user.id) %}
+                            <small class="text-muted p-t-30 db">Actions</small>
+
+                            {% if workflow_can(topic, 'approval') %}
+                                <a class="btn waves-effect waves-light btn-block text-white btn-info">
+                                    Lancer la consultation</a>
+                            {% endif %}
+
+                            {% if is_granted('ROLE_ADMIN') %}
+
+                                {% if workflow_can(topic, 'publish') %}
+                                    <a class="btn waves-effect waves-light btn-block text-white btn-success">Publier</a>
+                                {% endif %}
+
+                                {% if workflow_can(topic, 'online') %}
+                                    <a class="btn waves-effect waves-light btn-block text-white btn-success">
+                                        Mettre en ligne</a>
+                                {% endif %}
+
+                                {% if workflow_can(topic, 'unpublish') %}
+                                    <a class="btn waves-effect waves-light btn-block text-white btn-danger">Dépublier</a>
+                                {% endif %}
+
+                                {% if workflow_can(topic, 'cancel') %}
+                                    <a class="btn waves-effect waves-light btn-block text-white btn-danger">Archiver</a>
+                                {% endif %}
+
+                            {% endif %}
+
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <!-- Column -->
+            <!-- Column -->
+            <div class="col-lg-8 col-xlg-9 col-md-7">
+                <div class="card">
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs profile-tab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-toggle="tab" href="#topic" role="tab">Informations</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#home" role="tab">Contribution des
+                                Ministères <span class="badge badge-pill badge-primary text-white ml-auto">25</span></a>
+                        </li>
+                    </ul>
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <!-- Le Sujet -->
+                        <div class="tab-pane active" id="topic" role="tabpanel">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-3 col-xs-6 b-r"><strong>Dernière mise a jour</strong>
+                                        <br>
+                                        <p class="text-muted">{{ topic.updatedDate | date('d/m/Y H:i') }}</p>
+                                    </div>
+                                    <div class="col-md-3 col-xs-6 b-r"><strong>Date de rédaction</strong>
+                                        <br>
+                                        <p class="text-muted">{{ topic.writingDate | date('d/m/Y') }}</p>
+                                    </div>
+                                    <div class="col-md-3 col-xs-6 b-r"><strong>Commentaires</strong>
+                                        <br>
+                                        <p class="text-muted">{{ topic.comments | length }}</p>
+                                    </div>
+                                    <div class="col-md-3 col-xs-6"><strong>Status</strong>
+                                        <br>
+                                        <p class="text-muted">{{ topic.status }}</p>
+                                    </div>
+                                </div>
+                                <hr>
+                                {{ topic.content | raw }}
+                            </div>
+                        </div>
+                        <!-- Contribution des Ministères -->
+                        <div class="tab-pane" id="home" role="tabpanel">
+                            <div class="card-body">
+                                <div class="profiletimeline">
+                                    <div class="sl-item">
+                                        <div class="sl-left"><img src="../assets/images/users/1.jpg" alt="user"
+                                                                  class="img-circle"/></div>
+                                        <div class="sl-right">
+                                            <div><a href="javascript:void(0)" class="link">John Doe</a> <span
+                                                        class="sl-date">5 minutes ago</span>
+                                                <p>assign a new task <a href="javascript:void(0)"> Design weblayout</a>
+                                                </p>
+                                                <div class="row">
+                                                    <div class="col-lg-3 col-md-6 m-b-20"><img
+                                                                src="../assets/images/big/img1.jpg"
+                                                                class="img-responsive radius"/></div>
+                                                    <div class="col-lg-3 col-md-6 m-b-20"><img
+                                                                src="../assets/images/big/img2.jpg"
+                                                                class="img-responsive radius"/></div>
+                                                    <div class="col-lg-3 col-md-6 m-b-20"><img
+                                                                src="../assets/images/big/img3.jpg"
+                                                                class="img-responsive radius"/></div>
+                                                    <div class="col-lg-3 col-md-6 m-b-20"><img
+                                                                src="../assets/images/big/img4.jpg"
+                                                                class="img-responsive radius"/></div>
+                                                </div>
+                                                <div class="like-comm"><a href="javascript:void(0)" class="link m-r-10">2
+                                                        comment</a> <a href="javascript:void(0)" class="link m-r-10"><i
+                                                                class="fa fa-heart text-danger"></i> 5 Love</a></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="sl-item">
+                                        <div class="sl-left"><img src="../assets/images/users/2.jpg" alt="user"
+                                                                  class="img-circle"/></div>
+                                        <div class="sl-right">
+                                            <div><a href="javascript:void(0)" class="link">John Doe</a> <span
+                                                        class="sl-date">5 minutes ago</span>
+                                                <div class="m-t-20 row">
+                                                    <div class="col-md-3 col-xs-12"><img
+                                                                src="../assets/images/big/img1.jpg" alt="user"
+                                                                class="img-responsive radius"/></div>
+                                                    <div class="col-md-9 col-xs-12">
+                                                        <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                                            Integer nec odio. Praesent libero. Sed cursus ante dapibus
+                                                            diam. </p> <a href="javascript:void(0)"
+                                                                          class="btn btn-success"> Design weblayout</a>
+                                                    </div>
+                                                </div>
+                                                <div class="like-comm m-t-20"><a href="javascript:void(0)"
+                                                                                 class="link m-r-10">2 comment</a> <a
+                                                            href="javascript:void(0)" class="link m-r-10"><i
+                                                                class="fa fa-heart text-danger"></i> 5 Love</a></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="sl-item">
+                                        <div class="sl-left"><img src="../assets/images/users/3.jpg" alt="user"
+                                                                  class="img-circle"/></div>
+                                        <div class="sl-right">
+                                            <div><a href="javascript:void(0)" class="link">John Doe</a> <span
+                                                        class="sl-date">5 minutes ago</span>
+                                                <p class="m-t-10"> Lorem ipsum dolor sit amet, consectetur adipiscing
+                                                    elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus
+                                                    diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis
+                                                    sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue
+                                                    semper </p>
+                                            </div>
+                                            <div class="like-comm m-t-20"><a href="javascript:void(0)"
+                                                                             class="link m-r-10">2 comment</a> <a
+                                                        href="javascript:void(0)" class="link m-r-10"><i
+                                                            class="fa fa-heart text-danger"></i> 5 Love</a></div>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="sl-item">
+                                        <div class="sl-left"><img src="../assets/images/users/4.jpg" alt="user"
+                                                                  class="img-circle"/></div>
+                                        <div class="sl-right">
+                                            <div><a href="javascript:void(0)" class="link">John Doe</a> <span
+                                                        class="sl-date">5 minutes ago</span>
+                                                <blockquote class="m-t-10">
+                                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+                                                    eiusmod tempor incididunt
+                                                </blockquote>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Answer -->
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Apporter un éclairage</h4>
+                        {% for message in app.flashes('notice') %}
+                            <div class="alert alert-success">
+                                {{ message }}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                                            aria-hidden="true">×</span></button>
+                            </div>
+                        {% endfor %}
+
+                        {% if topic.answer is null or (topic.answer.user.id == app.user.id) or is_granted('ROLE_ADMIN') %}
+                            {{ form(form) }}
+                        {% else %}
+                            <h6 class="card-subtitle mb-2 text-muted">par
+                                <em>{{ topic.answer.user.firstname ~ ' ' ~ topic.answer.user.lastname }}</em></h6>
+                            <div id="rsv_answer" class="mt-4">
+                                <div class="form-group">
+                                    <label class="font-weight-bolder">Réponse courte.</label>
+                                    {{ topic.answer.summary | raw }}
+                                </div>
+                                <div class="form-group">
+                                    <label class="font-weight-bolder">Réponse complète.</label>
+                                    {{ topic.answer.content | raw }}
+                                </div>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <!-- Column -->
+        </div>
+        <!-- Row -->
+        <!-- ============================================================== -->
+        <!-- End PAge Content -->
+        <!-- ============================================================== -->
+    </div>
+{% endblock %}
+
+{% block final_stylesheets %}
+
+{% endblock %}
+
+{% block final_javascripts %}
+    <script src="https://cdn.ckeditor.com/ckeditor5/15.0.0/classic/ckeditor.js"></script>
+    <script>
+        // -- CkEditor
+        ClassicEditor.create(document.querySelector('#rsv_answer_summary'))
+            .then(editor => {
+                editor.model.document.on('change:data', () => {
+                    const data = editor.getData();
+                    const qS = document.querySelectorAll("label[for=rsv_answer_summary]");
+                    const nbLeftChar = 255 - data.length;
+                    qS[0].innerHTML = "Réponse courte <em>( " + nbLeftChar + " Caractères restant. )</em>";
+                });
+            });
+        ClassicEditor.create(document.querySelector('#rsv_answer_content'));
+    </script>
+{% endblock %}

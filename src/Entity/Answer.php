@@ -32,36 +32,30 @@ class Answer
     private $writingDate;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $updatedDate;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $deletedDate;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $publishDate;
-
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $revisionNumber;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Topic", inversedBy="answers")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $topic;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="answers")
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;
+
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\Topic", mappedBy="answer", cascade={"persist", "remove"})
+     */
+    private $topic;
 
     public function getId(): ?int
     {
@@ -140,14 +134,14 @@ class Answer
         return $this;
     }
 
-    public function getRevisionNumber(): ?int
+    public function getUser(): ?User
     {
-        return $this->revisionNumber;
+        return $this->user;
     }
 
-    public function setRevisionNumber(int $revisionNumber): self
+    public function setUser(?User $user): self
     {
-        $this->revisionNumber = $revisionNumber;
+        $this->user = $user;
 
         return $this;
     }
@@ -161,18 +155,31 @@ class Answer
     {
         $this->topic = $topic;
 
+        // set (or unset) the owning side of the relation if necessary
+        $newAnswer = null === $topic ? null : $this;
+        if ($topic->getAnswer() !== $newAnswer) {
+            $topic->setAnswer($newAnswer);
+        }
+
         return $this;
     }
 
-    public function getUser(): ?User
+    /**
+     * Update Answer Data
+     * @param string $summary
+     * @param string $content
+     * @param User $user
+     * @param Topic $topic
+     * @param \DateTime $writingDate
+     */
+    public function update(string $summary, string $content, User $user, Topic $topic, \DateTime $writingDate)
     {
-        return $this->user;
-    }
-
-    public function setUser(?User $user): self
-    {
+        $this->summary = $summary;
+        $this->content = $content;
         $this->user = $user;
-
-        return $this;
+        $this->topic = $topic;
+        $this->writingDate = $writingDate;
+        $this->updatedDate = new \DateTime();
     }
+
 }
