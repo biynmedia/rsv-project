@@ -33,9 +33,12 @@
         "build": "encore production --progress"
     },
     "dependencies": {
+        "@sweetalert2/theme-bootstrap-4": "^3.0.7",
         "datatables.net": "^1.10.20",
         "datatables.net-bs4": "^1.10.20",
         "datatables.net-responsive-bs4": "^2.2.3",
-        "dropify": "^0.2.2"
+        "dropify": "^0.2.2",
+        "moment": "^2.24.0",
+        "sweetalert2": "^9.4.3"
     }
 }

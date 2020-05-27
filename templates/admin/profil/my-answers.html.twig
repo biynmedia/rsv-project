@@ -1,16 +1,17 @@
 {% extends "admin_layout.html.twig" %}
 
 {% block page_title %}
-    Gérer les Sujets
+    Mes Eclairages
 {% endblock %}
 
 {% block breabcrumb_page %}
-    Gérer les Sujets
+    Mes Eclairages
 {% endblock %}
 
 {% block breabcrumb_item %}
     <li class="breadcrumb-item"><a href="{{ path('admin_dashboard') }}">Dashboard</a></li>
-    <li class="breadcrumb-item active">Consulter les sujets</li>
+    <li class="breadcrumb-item"><a href="#">Profil</a></li>
+    <li class="breadcrumb-item active">Mes éclairages</li>
 {% endblock %}
 
 {% block content %}
@@ -19,8 +20,8 @@
             <div class="col-12 mx-auto">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Les Sujets</h4>
-                        <h6 class="card-subtitle">Totalité des sujets du site.</h6>
+                        <h4 class="card-title">Mes Eclairages</h4>
+                        <h6 class="card-subtitle">Mes éclairages</h6>
                         {% for message in app.flashes('notice') %}
                             <div class="alert alert-success">
                                 {{ message }}
@@ -33,32 +34,23 @@
                                 <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Nom</th>
-                                    <th>Categorie</th>
-                                    <th>Proposé par</th>
+                                    <th>Nom du Sujet</th>
+                                    <th>Accroche</th>
                                     <th>Date</th>
                                     <th>Status</th>
                                     <th>Actions</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                {% for topic in topics %}
+                                {% for answer in answers %}
                                     <tr>
-                                        <td>{{ topic.id }}</td>
-                                        <td>{{ topic.name }}</td>
-                                        <td>{{ topic.category.name }}</td>
-                                        <td>{{ topic.user.firstname ~ ' ' ~ topic.user.lastname }}</td>
-                                        <td>{{ topic.writingDate | date('d/m/Y') }}</td>
-                                        <td>{{ topic.status }}</td>
+                                        <td>{{ answer.id }}</td>
+                                        <td>{{ answer.topic.name }}</td>
+                                        <td>{{ answer.summary | striptags }}</td>
+                                        <td>{{ answer.writingDate | date('d/m/Y') }}</td>
+                                        <td>{{ answer.topic.status }}</td>
                                         <td>
-                                            <a href="{{ path('admin_topic', { 'id' : topic.id, 'alias' : topic.alias }) }}" data-toggle="tooltip" title="Consulter" class="btn btn-primary"><i class="fas fa-eye"></i></a>
-                                            {% if (topic.status != 'published' and topic.user.id == app.user.id) or is_granted('ROLE_ADMIN') %}
-                                                <a href="{{ path('topic_edit', { 'id' : topic.id }) }}" data-toggle="tooltip" title="Editer" class="btn btn-warning"><i class="fas fa-edit"></i></a>
-                                            {% endif %}
-
-                                            {% if is_granted('ROLE_ADMIN') %}
-                                                <a href="#" data-toggle="tooltip" title="Dépublier" class="btn btn-danger"><i class="fas fa-trash"></i></a>
-                                            {% endif %}
+                                            <a href="{{ path('admin_topic', { 'id' : answer.topic.id, 'alias' : answer.topic.alias }) }}" data-toggle="tooltip" title="Consulter" class="btn btn-primary"><i class="fas fa-eye"></i></a>
                                         </td>
                                     </tr>
                                 {% endfor %}

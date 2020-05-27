@@ -19,22 +19,22 @@ class TopicRepository extends ServiceEntityRepository
         parent::__construct($registry, Topic::class);
     }
 
-    // /**
-    //  * @return Topic[] Returns an array of Topic objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    /**
+     * Get latest topics
+     * @param int $limit
+     * @return Topic[] Returns an array of Topic objects
+     */
+    public function findLastTopics(int $limit)
     {
         return $this->createQueryBuilder('t')
-            ->andWhere('t.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('t.id', 'ASC')
-            ->setMaxResults(10)
+            ->andWhere('t.status = :status')
+            ->setParameter('status', 'published')
+            ->orderBy('t.id', 'DESC')
+            ->setMaxResults($limit)
             ->getQuery()
             ->getResult()
         ;
     }
-    */
 
     /*
     public function findOneBySomeField($value): ?Topic

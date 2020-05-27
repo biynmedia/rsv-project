@@ -6,30 +6,35 @@
 
 {% block content %}
 
+    {% set topic1 = topics.0 %}
+    {% set topic2 = topics.1 %}
+
     <div class="featured-post-area pb-80">
         <div class="container">
             <div class="row">
                 <div class="col-lg-7 col-md-6">
                     <div class="featured-post-wrap">
                         <div class="featured-post-content">
-                            <h2><a href="blog-details.html">These graphic-design images from north korea are glorious beholdea collection of hermit...</a></h2>
-                            <p>Mordan Bowman</p>
-                            <span>15 December, 17</span>
+                            <h2><a href="#">{{ topic1.name }}</a>
+                                <br><small>{{ topic1.user.firstname ~ ' ' ~ topic1.user.lastname }}</small></h2>
+                            <p>{{ topic1.summary | raw }}</p>
+                            <span>{{ topic1.publishDate | date('d/m/Y') }}</span>
                         </div>
                         <div class="featured-post-img">
-                            <img src="{{ asset('build/images/app/featured/7.jpg') }}" alt="">
+                            <img src="{{ asset('uploads/250/' ~ topic1.image) }}" alt="{{ topic1.name }}">
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-5 col-md-6">
                     <div class="featured-post-wrap2">
                         <div class="featured-post-img">
-                            <img src="{{ asset('build/images/app/featured/8.jpg') }}" alt="">
+                            <img src="{{ asset('uploads/470/' ~ topic2.image) }}" alt="{{ topic2.name }}">
                         </div>
                         <div class="featured-post-content">
-                            <h2><a href="blog-details.html">These graphic-design images from north korea are glorious to beholdea collection of hermit...</a></h2>
-                            <p>Mordan Bowman</p>
-                            <span>15 December, 17</span>
+                            <h2><a href="#">{{ topic2.name }}</a>
+                                <br><small>{{ topic2.user.firstname ~ ' ' ~ topic2.user.lastname }}</small></h2>
+                            <p>{{ topic1.summary | raw }}</p>
+                            <span>{{ topic2.publishDate | date('d/m/Y') }}</span>
                         </div>
                     </div>
                 </div>

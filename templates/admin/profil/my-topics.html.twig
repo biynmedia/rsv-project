@@ -1,16 +1,17 @@
 {% extends "admin_layout.html.twig" %}
 
 {% block page_title %}
-    Gérer les Sujets
+    Mes Sujets
 {% endblock %}
 
 {% block breabcrumb_page %}
-    Gérer les Sujets
+    Mes Sujets
 {% endblock %}
 
 {% block breabcrumb_item %}
     <li class="breadcrumb-item"><a href="{{ path('admin_dashboard') }}">Dashboard</a></li>
-    <li class="breadcrumb-item active">Consulter les sujets</li>
+    <li class="breadcrumb-item"><a href="#">Profil</a></li>
+    <li class="breadcrumb-item active">Mes sujets</li>
 {% endblock %}
 
 {% block content %}
@@ -19,8 +20,8 @@
             <div class="col-12 mx-auto">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Les Sujets</h4>
-                        <h6 class="card-subtitle">Totalité des sujets du site.</h6>
+                        <h4 class="card-title">Mes Sujets</h4>
+                        <h6 class="card-subtitle">Mes propositions de sujets.</h6>
                         {% for message in app.flashes('notice') %}
                             <div class="alert alert-success">
                                 {{ message }}

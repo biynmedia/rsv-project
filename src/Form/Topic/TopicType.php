@@ -42,12 +42,14 @@ class TopicType extends AbstractType
             ])
             ->add('image', FileType::class, [
                 'label' => 'Image d\'illustration :',
+                'required' => false,
                 'attr' => [
-                    'class' => 'dropify'
+                    'class' => 'dropify',
+                    'data-default-file' => $options['image_url']
                 ]
             ])
             ->add('submit', SubmitType::class, [
-                'label' => 'Créer le sujet',
+                'label' => 'Enregistrer le sujet',
                 'attr' => [
                     'class' => 'btn-dark btn-block'
                 ]
@@ -57,7 +59,8 @@ class TopicType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => TopicRequest::class
+            'data_class' => TopicRequest::class,
+            'image_url' => null,
         ]);
     }
 

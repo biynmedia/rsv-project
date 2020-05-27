@@ -57,24 +57,26 @@ class AdminRsvController extends AbstractController
      * @param AnswerRequestHandler $answerRequestHandler
      * @return Response
      */
-    public function topic(Topic $topic,
-                          string $alias,
+    public function topic(string $alias,
                           Request $request,
-                          AnswerRequestHandler $answerRequestHandler)
+                          AnswerRequestHandler $answerRequestHandler,
+                          Topic $topic = null)
     {
+
+        # TODO : Possibilité de reinitialisé le sujet. Contribution, Echange Admin et Eclairage a 0.
 
         # Check topic is not null
         if (null === $topic) {
-            return $this->redirectToRoute('admin_dashboard', [],
+            return $this->redirectToRoute('admin_topics', [],
                 Response::HTTP_MOVED_PERMANENTLY);
         }
 
         # Check SLUG
         if ($topic->getAlias() !== $alias) {
-            return $this->redirectToRoute('admin_dashboard', [
+            return $this->redirectToRoute('admin_topic', [
                 'alias' => $topic->getAlias(),
                 'id' => $topic->getId()
-            ]);
+            ], Response::HTTP_MOVED_PERMANENTLY);
         }
 
         # Manage Answer Request

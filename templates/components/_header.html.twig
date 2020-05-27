@@ -15,7 +15,7 @@
                                 {% if is_granted('ROLE_ADMIN') %}
                                     <li><a href="{{ path('admin_dashboard') }}"><i class="fa fa-sitemap" aria-hidden="true"></i> Administration</a></li>
                                 {% elseif is_granted('ROLE_MINISTRY') %}
-                                    <li><a href="#"><i class="fa fa-users" aria-hidden="true"></i> Espace Ministère</a></li>
+                                    <li><a href="{{ path('admin_dashboard') }}"><i class="fa fa-users" aria-hidden="true"></i> Espace Ministère</a></li>
                                 {% else %}
                                     <li><a href="#"><i class="fa fa-user-circle" aria-hidden="true"></i> Espace Abonnés</a></li>
                                 {% endif %}

@@ -10,11 +10,14 @@
                 {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                     <li class="user-pro"><a class="has-arrow waves-effect waves-dark" href="javascript:void(0)"
                                             aria-expanded="false"><img
-                                    src="{{ asset('build/images/admin/users/1.jpg') }}"
+                                    src="{{ asset('assets/images/user-profil.png') }}"
                                     alt="user-img" class="img-circle"><span
                                     class="hide-menu">{{ app.user.firstname }}</span></a>
                         <ul aria-expanded="false" class="collapse">
                             <li><a href="javascript:void(0)"><i class="ti-user"></i> Mon Profil</a></li>
+                            <li><a href="{{ path('profil_topics') }}"><i class="ti-notepad"></i> Mes Sujets</a></li>
+                            <li><a href="{{ path('profil_answers') }}"><i class="ti-thought"></i> Mes Eclairages</a></li>
+                            <li><a href="{{ path('profil_contributions') }}"><i class="ti-comments"></i> Mes Contributions</a></li>
                             <li><a href="{{ path('security_logout') }}"><i class="fa fa-power-off"></i> Déconnexion</a>
                             </li>
                         </ul>
@@ -43,8 +46,12 @@
                         </ul>
                 </li>
 
+                <li><a class="waves-effect waves-dark" href="{{ path('rsv_home') }}" aria-expanded="false"><i
+                                class="fas fa-arrow-circle-left text-success"></i><span
+                                class="hide-menu">Site public</span></a></li>
+
                 <li><a class="waves-effect waves-dark" href="{{ path('security_logout') }}" aria-expanded="false"><i
-                                class="far fa-circle text-success"></i><span
+                                class="far fa-circle text-danger"></i><span
                                 class="hide-menu">Déconnexion</span></a></li>
             </ul>
         </nav>

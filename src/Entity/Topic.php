@@ -200,10 +200,9 @@ class Topic
         return $this->publishDate;
     }
 
-    public function setPublishDate(\DateTimeInterface $publishDate): self
+    public function setPublishDate(string $time = 'now'): self
     {
-        $this->publishDate = $publishDate;
-
+        $this->publishDate = new \DateTime($time);
         return $this;
     }
 
@@ -284,5 +283,44 @@ class Topic
         $this->answer = $answer;
 
         return $this;
+    }
+
+    /**
+     * Check if passed user is the topic writer
+     * @param User $user
+     * @return bool
+     */
+    public function isWriter(?User $user = null): bool
+    {
+        return $user && ($user->getId() === $this->getUser()->getId());
+    }
+
+    /**
+     * Update Entity Data
+     * @param string $name
+     * @param string $alias
+     * @param string $summary
+     * @param string $content
+     * @param string $image
+     * @param string $status
+     * @param Category $category
+     */
+    public function update(
+        string $name,
+        string $alias,
+        string $summary,
+        string $content,
+        string $image,
+        string $status,
+        Category $category)
+    {
+        $this->name = $name;
+        $this->alias = $alias;
+        $this->summary = $summary;
+        $this->content = $content;
+        $this->image = $image;
+        $this->status = $status;
+        $this->category = $category;
+        $this->updatedDate = new \DateTime();
     }
 }

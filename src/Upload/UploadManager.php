@@ -20,14 +20,24 @@ class UploadManager
     /**
      * Upload File and return new File name
      * @param UploadedFile $uploadedFile
+     * @param string $previousImage
      * @return string
      */
-    public function upload(UploadedFile $uploadedFile): string
+    public function upload(UploadedFile $uploadedFile, string $previousImage = null): string
     {
+        # Delete previous image
+        if ($previousImage) {
+            $this->deleteUploadedFile($previousImage);
+            $this->deleteUploadedFile($previousImage, 120);
+            $this->deleteUploadedFile($previousImage, 250);
+            $this->deleteUploadedFile($previousImage, 370);
+            $this->deleteUploadedFile($previousImage, 470);
+        }
+
         # Set filename
         $originalFilename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
         $safeFilename = transliterator_transliterate('Any-Latin; Latin-ASCII; [^A-Za-z0-9_] remove; Lower()', $originalFilename);
-        $newFilename = $safeFilename.'-'.uniqid().'.'.$uploadedFile->guessExtension();
+        $newFilename = $safeFilename . '-' . uniqid() . '.' . $uploadedFile->guessExtension();
 
         # Upload original file
         $uploadedFile->move(
@@ -36,7 +46,7 @@ class UploadManager
         );
 
         # Generate thumbnails
-        $file = $this->uploadsDirectory.'/'.$newFilename;
+        $file = $this->uploadsDirectory . '/' . $newFilename;
         $this->generateThumbnail($file, 120, 150);
         $this->generateThumbnail($file, 250, 412);
         $this->generateThumbnail($file, 370, 250);
@@ -56,11 +66,27 @@ class UploadManager
     {
         $handle = new Upload($file);
         if ($handle->uploaded) {
-            $handle->image_resize         = true;
-            $handle->image_x              = $sizeX;
-            $handle->image_y              = $sizeY;
+            $handle->image_resize = true;
+            $handle->image_x = $sizeX;
+            $handle->image_y = $sizeY;
             $handle->image_ratio_crop = true;
             $handle->process($this->uploadsDirectory . '/' . $sizeX);
+        }
+    }
+
+    /**
+     * Delete file from upload directory.
+     * @param string $filename
+     * @param string|null $dir
+     */
+    public function deleteUploadedFile(string $filename, string $dir = null): void
+    {
+        if ($filename !== 'default.png') {
+            $uploadsDir = $dir === null ? $this->uploadsDirectory : $this->uploadsDirectory . '/' . $dir;
+            $file = $uploadsDir . '/' . $filename;
+            if (file_exists($file)) {
+                unlink($file);
+            }
         }
     }
 

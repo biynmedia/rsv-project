@@ -3,6 +3,9 @@
 
 namespace App\Topic;
 
+use App\Entity\Topic;
+use Symfony\Component\Asset\Packages;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Validator\Constraints as Assert;
 
 class TopicRequest
@@ -34,6 +37,7 @@ class TopicRequest
      *     maxSizeMessage="Votre image est trop lourde. {{ limit }} maximum.")
      */
     public $image;
+    public $imageUrl;
     public $status;
     public $user;
     public $writingDate;
@@ -60,5 +64,24 @@ class TopicRequest
     public function setStatus($status): void
     {
         $this->status = $status;
+    }
+
+    public static function createFromTopic(Topic $topic, string $uploadsDir, Packages $packages): self
+    {
+        $topicReq = new self();
+        $topicReq->user = $topic->getUser();
+        $topicReq->writingDate = $topic->getWritingDate();
+        $topicReq->content = $topic->getContent();
+        $topicReq->summary = $topic->getSummary();
+        $topicReq->updatedDate = $topic->getUpdatedDate();
+        $topicReq->publishDate = $topic->getPublishDate();
+        $topicReq->name = $topic->getName();
+        $topicReq->alias = $topic->getAlias();
+        $topicReq->image = new File($uploadsDir . '/' . $topic->getImage());
+        $topicReq->imageUrl = $packages->getUrl('uploads' . '/' . $topic->getImage());
+        $topicReq->category = $topic->getCategory();
+        $topicReq->status = $topic->getStatus();
+
+        return $topicReq;
     }
 }

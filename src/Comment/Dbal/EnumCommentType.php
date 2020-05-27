@@ -18,10 +18,11 @@ class EnumCommentType extends Type
     const ENUM_COMMENT = 'enumcomment';
     const STATUS_PUBLIC = 'public';
     const STATUS_PRIVATE = 'private';
+    const STATUS_ADMIN = 'admin';
 
     public function getSQLDeclaration(array $fieldDeclaration, AbstractPlatform $platform)
     {
-        return "ENUM('public', 'private')";
+        return "ENUM('public', 'private', 'admin')";
     }
 
     public function convertToPHPValue($value, AbstractPlatform $platform)
@@ -31,7 +32,7 @@ class EnumCommentType extends Type
 
     public function convertToDatabaseValue($value, AbstractPlatform $platform)
     {
-        if (!in_array($value, array(self::STATUS_PUBLIC, self::STATUS_PRIVATE))) {
+        if (!in_array($value, array(self::STATUS_PUBLIC, self::STATUS_PRIVATE, self::STATUS_ADMIN))) {
             throw new \InvalidArgumentException("Invalid comment status");
         }
         return $value;

@@ -37,6 +37,17 @@ class Comment
      */
     private $type;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\User")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $user;
+
+    public function __construct()
+    {
+        $this->writingDate = new \DateTime();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -86,6 +97,18 @@ class Comment
     public function setType(string $type): self
     {
         $this->type = $type;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }

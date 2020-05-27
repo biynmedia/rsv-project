@@ -4,6 +4,7 @@
 namespace App\Topic;
 
 
+use App\Entity\Topic;
 use App\Rsv\RsvTrait;
 use App\Upload\UploadManager;
 use Doctrine\ORM\EntityManagerInterface;
@@ -37,7 +38,7 @@ class TopicRequestHandler
             $topicRequest->image = $this->uploadManager->upload($topicRequest->image);
         } else {
             # TODO : Pas d'images il faut gérer une image par défaut
-            $topicRequest->image = 'default.jpg';
+            $topicRequest->image = 'default.png';
         }
 
         # Handle Workflow Process
@@ -52,6 +53,39 @@ class TopicRequestHandler
         $this->manager->flush();
 
         # TODO : Dispatch Topic Event
+
+        # Return user
+        return $topic;
+    }
+
+    public function update(TopicRequest $topicRequest, Topic $topic)
+    {
+        # Generate Topic Alias
+        $topicRequest->alias = $this->slugify($topicRequest->name);
+
+        # Handle Image Upload
+        # Todo delete previous images
+        if($topicRequest->image) {
+            $topicRequest->image = $this->uploadManager->upload($topicRequest->image, $topic->getImage());
+        } else {
+            $topicRequest->image = $topic->getImage();
+        }
+
+        # Create Topic Profil
+        $topic->update(
+            $topicRequest->name,
+            $topicRequest->alias,
+            $topicRequest->summary,
+            $topicRequest->content,
+            $topicRequest->image,
+            $topicRequest->status,
+            $topicRequest->category
+        );
+
+        # Persist data
+        $this->manager->flush();
+
+        # TODO : Dispatch Topic Update Event
 
         # Return user
         return $topic;
