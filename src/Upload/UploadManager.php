@@ -30,6 +30,7 @@ class UploadManager
             $this->deleteUploadedFile($previousImage);
             $this->deleteUploadedFile($previousImage, 120);
             $this->deleteUploadedFile($previousImage, 250);
+            $this->deleteUploadedFile($previousImage, 320);
             $this->deleteUploadedFile($previousImage, 370);
             $this->deleteUploadedFile($previousImage, 470);
         }
@@ -49,6 +50,7 @@ class UploadManager
         $file = $this->uploadsDirectory . '/' . $newFilename;
         $this->generateThumbnail($file, 120, 150);
         $this->generateThumbnail($file, 250, 412);
+        $this->generateThumbnail($file, 320, 320);
         $this->generateThumbnail($file, 370, 250);
         $this->generateThumbnail($file, 470, 200);
 

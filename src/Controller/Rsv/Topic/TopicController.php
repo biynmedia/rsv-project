@@ -6,6 +6,7 @@ namespace App\Controller\Rsv\Topic;
 
 use App\Entity\Topic;
 use App\Form\Topic\TopicType;
+use App\Form\Topic\VerseType;
 use App\Topic\TopicRequest;
 use App\Topic\TopicRequestHandler;
 use App\Upload\UploadManager;
@@ -92,7 +93,7 @@ class TopicController extends AbstractController
             'image_url' => $topicReq->imageUrl
         ];
 
-        $form = $this->createForm(TopicType::class, $topicReq, $options)
+        $form = $this->createForm(VerseType::class, $topicReq, $options)
             ->handleRequest($request);
 
         # Check form submission

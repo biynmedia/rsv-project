@@ -33,7 +33,7 @@
     <!-- footer-area start -->
     {% block footer %}
         <!-- instagram-area start -->
-        {{ include('components/_instagram-area.html.twig') }}
+        {{ render(controller('App\\Controller\\Rsv\\RsvController::instagram')) }}
         <!-- instagram-area end -->
 
         {{ include('components/_footer.html.twig') }}

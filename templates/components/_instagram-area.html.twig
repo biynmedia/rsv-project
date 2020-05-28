@@ -1,23 +1,15 @@
 <div class="instagram-area mb-80">
-    <div class="instagram-wrap">
-        <a href="#"><img src="{{ asset('build/images/app/instragram/1.jpg') }}" alt=""></a>
-    </div>
-    <div class="instagram-wrap">
-        <a href="#"><img src="{{ asset('build/images/app/instragram/2.jpg') }}" alt=""></a>
-    </div>
-    <div class="instagram-wrap">
-        <a href="#"><img src="{{ asset('build/images/app/instragram/3.jpg') }}" alt=""></a>
-    </div>
-    <div class="instagram-wrap">
-        <a href="#"><img src="{{ asset('build/images/app/instragram/4.jpg') }}" alt=""></a>
-    </div>
-    <div class="instagram-wrap">
-        <a href="#"><img src="{{ asset('build/images/app/instragram/5.jpg') }}" alt=""></a>
-    </div>
-    <div class="instagram-wrap">
-        <a href="#"><img src="{{ asset('build/images/app/instragram/2.jpg') }}" alt=""></a>
-    </div>
+
+    {% for verse in verses %}
+        <div class="instagram-wrap">
+            {# TODO : Add light box on click #}
+            <a href="javascript:void(0)">
+                <img src="{{ asset('uploads/320/' ~ verse.image) }}" alt="Verse {{ verse.id }}">
+            </a>
+        </div>
+    {% endfor %}
+
     <div class="instagram-content">
-        <a href="#">Follow Instragram</a>
+        <a href="#">Suivez-nous sur Instragram</a>
     </div>
 </div>

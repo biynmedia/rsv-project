@@ -7,7 +7,10 @@ namespace App\Controller\RsvAdmin;
 use App\Answer\AnswerRequest;
 use App\Answer\AnswerRequestHandler;
 use App\Entity\Topic;
+use App\Entity\Verse;
 use App\Form\Answer\AnswerType;
+use App\Form\Topic\VerseType;
+use App\Upload\UploadManager;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -112,6 +115,56 @@ class AdminRsvController extends AbstractController
         return $this->render("admin/dashboard/topic.html.twig", [
             'topic' => $topic,
             'form' => $form->createView()
+        ]);
+    }
+
+    /**
+     * Display online Verse
+     * @Route("/verses", name="admin_verses", methods={"GET|POST"})
+     * @param Request $request
+     * @param UploadManager $uploadManager
+     * @return Response
+     */
+    public function verse(Request $request, UploadManager $uploadManager)
+    {
+        # Get all topics
+        $verses = $this->getDoctrine()
+            ->getRepository(Verse::class)
+            ->findAll();
+
+        # Create Verse Form
+        $verse = new Verse();
+        $verseForm = $this->createForm(VerseType::class, $verse)
+            ->handleRequest($request);
+
+        # Handle Form
+        if ($verseForm->isSubmitted() && $verseForm->isValid()) {
+
+            # Upload and set image
+            $verse->setImage(
+                $uploadManager->upload(
+                    $verseForm->get('image')->getData()
+                )
+            );
+
+            # Save
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($verse);
+            $em->flush();
+
+            # Add Flash
+            $this->addFlash('notice',
+                'Merci. Votre verset est enregistré.');
+
+            # Redirect
+            return $this->redirectToRoute('admin_verses');
+
+        }
+
+        # Transmit data to view
+        return $this->render("admin/dashboard/verses.html.twig", [
+            'verses' => $verses,
+            'verseForm' => $verseForm->createView()
         ]);
     }
 

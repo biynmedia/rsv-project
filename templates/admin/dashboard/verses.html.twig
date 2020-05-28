@@ -1,0 +1,77 @@
+{% extends "admin_layout.html.twig" %}
+
+{% block page_title %}
+    Gérer les Versets
+{% endblock %}
+
+{% block breabcrumb_page %}
+    Gérer les Versets
+{% endblock %}
+
+{% block breabcrumb_item %}
+    <li class="breadcrumb-item"><a href="{{ path('admin_dashboard') }}">Dashboard</a></li>
+    <li class="breadcrumb-item active">Consulter et ajouter des versets</li>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-12 mx-auto">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Les Versets</h4>
+                        <h6 class="card-subtitle">Totalité des versets du site.</h6>
+                        {% for message in app.flashes('notice') %}
+                            <div class="alert alert-success">
+                                {{ message }}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                                            aria-hidden="true">×</span></button>
+                            </div>
+                        {% endfor %}
+                        <div class="table-responsive m-t-40">
+                            <table id="topicsTable" class="table table-bordered table-striped">
+                                <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Image</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for verse in verses %}
+                                    <tr>
+                                        <td>{{ verse.id }}</td>
+                                        <td>
+                                            <img src="{{ asset('uploads/320/' ~ verse.image ) }}"
+                                                 height="120" alt="Verse ID {{ verse.id }}">
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 mx-auto">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Charger un Nouveau Verset</h4>
+                        {{ form(verseForm) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block final_stylesheets %}
+    {{ encore_entry_link_tags('datatable') }}
+    {{ encore_entry_link_tags('topic') }}
+{% endblock %}
+
+{% block final_javascripts %}
+    {{ encore_entry_script_tags('datatable') }}
+    {{ encore_entry_script_tags('topic') }}
+{% endblock %}

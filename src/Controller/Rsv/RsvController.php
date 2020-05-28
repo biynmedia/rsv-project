@@ -5,6 +5,7 @@ namespace App\Controller\Rsv;
 
 
 use App\Entity\Topic;
+use App\Entity\Verse;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -30,6 +31,22 @@ class RsvController extends AbstractController
         return $this->render('rsv/home.html.twig', [
             'topics' => $topics
         ]);
+    }
+
+    /**
+     * Render Verse, Instagram Area
+     */
+    public function instagram()
+    {
+        # Get Verses
+        # TODO : Make Random
+        $verses = $this->getDoctrine()->getRepository(Verse::class)
+            ->findAll();
+
+        return $this->render('components/_instagram-area.html.twig', [
+            'verses' => $verses
+        ]);
+
     }
 
 }
