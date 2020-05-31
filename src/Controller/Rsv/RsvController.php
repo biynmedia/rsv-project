@@ -4,6 +4,7 @@
 namespace App\Controller\Rsv;
 
 
+use App\Entity\Category;
 use App\Entity\Topic;
 use App\Entity\Verse;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -45,6 +46,21 @@ class RsvController extends AbstractController
 
         return $this->render('components/_instagram-area.html.twig', [
             'verses' => $verses
+        ]);
+
+    }
+
+    /**
+     * Render Category
+     */
+    public function category()
+    {
+        # Get Categories
+        $categories = $this->getDoctrine()->getRepository(Category::class)
+            ->findAll();
+
+        return $this->render('components/_category.html.twig', [
+            'categories' => $categories
         ]);
 
     }

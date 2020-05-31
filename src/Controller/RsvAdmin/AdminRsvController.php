@@ -9,7 +9,7 @@ use App\Answer\AnswerRequestHandler;
 use App\Entity\Topic;
 use App\Entity\Verse;
 use App\Form\Answer\AnswerType;
-use App\Form\Topic\VerseType;
+use App\Form\Verse\VerseType;
 use App\Upload\UploadManager;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
