@@ -1,0 +1,166 @@
+{% extends "front_layout.html.twig" %}
+
+{% block page_title %}
+    {{ topic.name }}
+{% endblock %}
+
+{% block content %}
+    <!-- breadcumb-area start -->
+    <div class="breadcumb-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="breadcumb-wrap text-center">
+                        <h2>{{ topic.name }}</h2>
+                        <ul>
+                            <li><a href="{{ path('rsv_home') }}">Accueil</a></li>
+                            <li>-</li>
+                            <li class="active">{{ topic.category.name }}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- breadcumb-area end -->
+    <!-- .blog-details.html-area start -->
+    <div class="blog-details-area ptb-80">
+        <div class="container">
+            <div class="row revarce-wrap">
+                <div class="col-lg-4 col-md-7 col-12">
+                    <aside class="sidebar-popular-post">
+                        <div class="widget widget_categories">
+                            {{ render(controller('App\\Controller\\Rsv\\RsvController::category')) }}
+                        </div>
+                        <div class="widget_recent_entries widget">
+                            {{ render(controller('App\\Controller\\Rsv\\RsvController::latesttopics')) }}
+                        </div>
+                        <div class="booking-wrap2">
+                            <div class="booking-img2">
+                                <img src="{{ asset('assets/images/booking2.jpg') }}" alt="Inscription Newsletter">
+                            </div>
+                            <div class="booking-form">
+                                {{ render(controller('App\\Controller\\Rsv\\RsvController::newsletter')) }}
+                            </div>
+                        </div>
+                    </aside>
+                </div>
+                <div class="col-lg-8 col-12">
+                    <div class="blog-wrapper">
+                        <div class="blog-images">
+                            <img src="{{ asset('uploads/730/' ~ topic.image) }}" alt="{{ topic.name }}">
+                        </div>
+                        <div>
+                            {{ topic.content | raw }}
+                        </div>
+                        <div class="blog-meta">
+                            {# Eclairage TODO : Créer profil du ministère  #}
+                            <ul>
+                                <li>Eclairage apporté par</li>
+                                <li>:</li>
+                                <li>
+                                    <a href="#">{{ topic.user.ministry ~ ' ' ~ topic.user.firstname  ~ ' ' ~ topic.user.lastname }}</a>
+                                </li>
+                            </ul>
+                            {# Contribution #}
+                            <ul>
+                                <li>Ministères ayant contribués</li>
+                                <li>:</li>
+                                <li><a href="#">By Thomas Albernd</a></li>
+                            </ul>
+                        </div>
+
+                        {# Réponse Courte #}
+                        <article>{{ topic.answer.summary | raw }}</article>
+                        <article class="readmore">{{ topic.answer.content | raw }}</article>
+
+                        <ul class="socil-media">
+                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                            <li><a href="#"><i class="fa fa-skype"></i></a></li>
+                        </ul>
+                        <div class="comment-main">
+                            <h3 class="blog-title">Points de vue des abonné(e)s {#<span>(12)</span>#}</h3>
+                            <ol class="comments">
+                                {% if topic.comments is not empty %}
+                                    <div class="profiletimeline">
+                                        {% for comment in topic.comments %}
+                                            {% if comment.type == 'public' %}
+                                                <li class="comment even thread-even depth-1" id="comment-1">
+                                                    <div id="div-comment-1" class="comment-wrap {{ app.user and app.user.id == comment.user.id ? 'comment-wrap--me' : '' }}">
+                                                        <div class="comment-theme">
+                                                            <div class="comment-image">
+                                                                <img width="100" src="{{ asset('assets/images/user-profil.png') }}" alt="User">
+                                                            </div>
+                                                        </div>
+                                                        <div class="comment-main-area">
+                                                            <div class="comment-wrapper">
+                                                                <div class="sewl-comments-meta">
+                                                                    <h4>{{ comment.user.ministry ~ ' ' ~ comment.user.firstname ~ ' ' ~ comment.user.lastname }}</h4>
+                                                                    <span><time datetime="{{ comment.writingDate | date('Y-m-d H:i') }}" class="sl-date"></time></span>
+                                                                </div>
+                                                                <div class="comment-area">
+                                                                    <p class="verse">{{ comment.verse }}</p>
+                                                                    <p>{{ comment.content }}</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                {% else %}
+                                    {# FIXME Condition not entering #}
+                                    <div class="alert alert-info text-center">
+                                        Pas de point de vue pour le moment.
+                                    </div>
+                                {% endif %}
+                            </ol>
+                        </div>
+                        <div id="respond" class="sewl-comment-form comment-respond">
+                            {% if userComment is not empty %}
+                                <h3 id="reply-title" class="blog-title">Mon point de vue</h3>
+                                {# TODO Modifier mon point de vue ? #}
+                                {# TODO Afficher en JS le NB de caracatère restant #}
+
+                                <div class="alert alert-info">
+                                    {{ userComment.verse }}
+                                </div>
+
+                                <p>{{ userComment.content }}</p>
+
+                            {% else %}
+                                <h3 id="reply-title" class="blog-title">Apporter mon point de vue</h3>
+                                {% if is_granted('ROLE_USER') %}
+                                    <p>Vous avez la possibilité d'apporter votre point de vue à notre éclairage.
+                                        <br>Votre point de vue doit s'appuyer sur un verset de la parole.
+                                        <br>Votre titre, prénom et nom sera affiché</p>
+                                    {{ render(controller('App\\Controller\\Rsv\\Topic\\CommentController::generatePublicCommentForm', {
+                                        'topicId' : topic.id
+                                    })) }}
+                                {% else %}
+                                    <div class="alert alert-info">
+                                        Vous devez être <strong><a
+                                                    href="{{ path('user_register') }}">inscrit</a></strong> et
+                                        <strong><a href="{{ path('security_login') }}">connecté</a></strong> pour donner
+                                        votre point de vue.
+                                    </div>
+                                {% endif %}
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- .blog-details.html-area end -->
+{% endblock %}
+
+{% block final_javascripts %}
+    <script>
+        window.xhrCommentChapters = "{{ path('xhr_book_chapters') }}";
+        window.xhrCommentVerses = "{{ path('xhr_book_verses') }}";
+    </script>
+{% endblock %}

@@ -5,10 +5,9 @@
                 <div class="col-md-6 col-lg-4 col-12">
                     <div class="footer-widget footer-logo">
                         <img src="{{ asset('build/images/app/logo.png') }}" alt="">
-                        <p>Duis autem vel eum iriure dolor in hendrerit in esse molestie consemuat vel illum dolore
-                            eugt nulla facilisis at vero eros accum.</p>
-                        <p>Esse molestie consequat vel illum dolore eugt nulla facilisis at vero eros accum.</p>
-                        <ul>
+                        <p>Rétablir sa Vérité est une plateforme permettant à tout en chacun d'obtenir des réponses à diverses questions à la lumière de la parole de Dieu.</p>
+                        <p>Vous avez une question ? <br><a href="#">Posez là nous.</a></p>
+                        {#<ul>
                             <li>
                                 <span>Address:</span> 70 Bowman St.South
                                 <br> Windsor, CT 06074
@@ -17,63 +16,17 @@
                                 <span>Contact:</span> +00 568 468 968
                                 <br> +00 469 856 576
                             </li>
-                        </ul>
+                        </ul>#}
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4 col-12">
                     <div class="footer-widget widget_recent_entries">
-                        <ul>
-                            <li>
-                                <div class="widget_recent_entries-img">
-                                    <img src="{{ asset('build/images/app/footer/1.jpg') }}" alt="">
-                                </div>
-                                <div class="widget_recent_entries-content">
-                                    <h3><a href="blog-details.html">Defying the traditional and mainstream parties
-                                            courtesy marche.</a></h3>
-                                    <h4>Naomi Jefferson</h4>
-                                    <span>15 December, 17</span>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="widget_recent_entries-img">
-                                    <img src="{{ asset('build/images/app/footer/2.jpg') }}" alt="">
-                                </div>
-                                <div class="widget_recent_entries-content">
-                                    <h3><a href="blog-details.html">Packing macron anddis insted about vote against
-                                            chat bubbleo head.</a></h3>
-                                    <h4>Naomi Jefferson</h4>
-                                    <span>15 December, 17</span>
-                                </div>
-                            </li>
-                        </ul>
+                        {{ render(controller('App\\Controller\\Rsv\\RsvController::latesttopics')) }}
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4 col-12">
                     <div class="footer-widget widget_recent_entries">
-                        <ul>
-                            <li>
-                                <div class="widget_recent_entries-img">
-                                    <img src="{{ asset('build/images/app/footer/3.jpg') }}" alt="">
-                                </div>
-                                <div class="widget_recent_entries-content">
-                                    <h3><a href="blog-details.html">British military courts aginst protester
-                                            business cultural protocol.</a></h3>
-                                    <h4>Naomi Jefferson</h4>
-                                    <span>15 December, 17</span>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="widget_recent_entries-img">
-                                    <img src="{{ asset('build/images/app/footer/2.jpg') }}" alt="">
-                                </div>
-                                <div class="widget_recent_entries-content">
-                                    <h3><a href="blog-details.html">Packing macron anddis insted about vote against
-                                            chat bubbleo head.</a></h3>
-                                    <h4>Naomi Jefferson</h4>
-                                    <span>15 December, 17</span>
-                                </div>
-                            </li>
-                        </ul>
+                        {{ render(controller('App\\Controller\\Rsv\\RsvController::latesttopics')) }}
                     </div>
                 </div>
             </div>
@@ -84,7 +37,9 @@
             <div class="row">
                 <div class="col-12">
                     <div class="copyright text-center">
-                        <p>Copyright {{ "now"|date("Y") }}, Tous Droits Réservés <span>Développé par <a href="https://biyn.media">Biyn Média.</a></span>
+                        <p>Copyright {{ "now"|date("Y") }}, Tous Droits Réservés
+                            <span>Ministère Prophétique <a target="_blank" href="https://uncoeurnouveau.fr">Un Coeur Nouveau</a>
+                            | Développé par <a target="_blank" href="https://biyn.media">Biyn Média</a></span>
                         </p>
                     </div>
                 </div>

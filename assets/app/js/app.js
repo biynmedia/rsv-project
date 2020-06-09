@@ -47,21 +47,139 @@ import jQueryBridget from 'jquery-bridget';
 import isotope from 'isotope-layout';
 jQueryBridget( 'isotope', isotope, $ );
 
+import readmore from 'readmore-js';
 import './libraries/waypoints';
 import 'slicknav/dist/jquery.slicknav';
-
 import 'magnific-popup';
-
 import './libraries/counter-up';
 import WOW from 'wow.js';
 
+// ------------------------------------- Display Date with Moment ------------------------------------- //
+
+import * as moment from 'moment';
+import 'moment/locale/fr';
+
+$('time.sl-date').each(function (t, e) {
+    const time = moment($(e).attr('datetime'));
+    $(e).html('<span>' + time.from(moment()) +'</span>');
+});
+
 (function($) {
     "use strict";
+
+
+    /*----------------------------
+     comment page ajax call -- Load chapters based on BookId
+    ------------------------------ */
+    $('#rsv_public_comment_book').change(function () {
+
+        const bookSelector = $(this);
+
+        // Request the verses of the selected book.
+        $.ajax({
+            url: xhrCommentChapters,
+            type: "GET",
+            dataType: "JSON",
+            data: {
+                bookId: bookSelector.val()
+            },
+            success: function (chapters) {
+
+                const chaptersSelect = $("#rsv_public_comment_chapter");
+
+                // Remove current options
+                chaptersSelect.html('');
+
+                // Empty value ...
+                chaptersSelect.append(`
+                    <option selected value> 
+                        ${bookSelector.find("option:selected").text()} chapitre...
+                    </option>`);
+
+
+                $.each(chapters, function (key, chapter) {
+                    chaptersSelect.append('<option value="' + chapter.id + '">' + chapter.name + '</option>');
+                });
+            },
+            error: function (err) {
+                console.log("Ooops, nous ne sommes pas parvenu à charger les chapitres de ce livre...");
+                console.log("Contactez l'administrateur par email sur : admin[at]retablirsaverite.org");
+                console.log(err);
+            }
+        });
+    });
+
+    /*----------------------------
+     comment page ajax call -- Load verses based on BookId and Chapters
+    ------------------------------ */
+    $('#rsv_public_comment_chapter').change(function () {
+
+        const bookSelector = $("#rsv_public_comment_book");
+        const chapterSelector = $(this);
+
+        // Request the verses of the selected book.
+        $.ajax({
+            url: xhrCommentVerses,
+            type: "GET",
+            dataType: "JSON",
+            data: {
+                bookId: bookSelector.val(),
+                chapterId: chapterSelector.val()
+            },
+            success: function (verses) {
+
+                const versesSelect = $("#rsv_public_comment_verse");
+
+                // Remove current options
+                versesSelect.html('');
+
+                // Empty value ...
+                versesSelect.append(`
+                    <option selected value>
+                        ${bookSelector.find("option:selected").text()} ${chapterSelector.find("option:selected").val()} verset...
+                    </option>`);
+
+                $.each(verses, function (key, verse) {
+                    versesSelect.append('<option value="' + verse.id + '" data-value="' + verse.text + '">' + verse.name + '</option>');
+                });
+            },
+            error: function (err) {
+                console.log("Ooops, nous ne sommes pas parvenu à charger les versets de ce livre...");
+                console.log("Contactez l'administrateur par email sur : admin[at]retablirsaverite.org");
+                console.log(err);
+            }
+        });
+    });
+
+    /*----------------------------
+     comment page ajax call -- Load verses based on BookId and Chapters
+    ------------------------------ */
+    $('#rsv_public_comment_verse').change(function () {
+
+        const bookSelector = $("#rsv_public_comment_book");
+        const chapterSelector = $("#rsv_public_comment_chapter");
+        const verseSelector = $(this);
+        const bibleVerseSelect = $('.bible__verset');
+        const verseTextHidden = $("#rsv_public_comment_verseText");
+
+        bibleVerseSelect.html(`${bookSelector.find("option:selected").text()} ${chapterSelector.find("option:selected").val()} - ${verseSelector.find("option:selected").val()} : ${verseSelector.find("option:selected").attr('data-value')}`);
+        bibleVerseSelect.parent().show();
+        verseTextHidden.val(bibleVerseSelect.html());
+
+    });
 
     /*----------------------------
      wow js active
     ------------------------------ */
     new WOW().init();
+
+    // Read More Section
+    // https://github.com/jedfoster/Readmore.js/tree/version-3.0
+    new readmore('.readmore', {
+        speed: 75,
+        lessLink: '<a class="btn btn-primary" href="javascript:void(0)">Réduire</a>',
+        moreLink: '<a class="btn btn-primary" href="javascript:void(0)">Voir l\'éclairage complet</a>'
+    });
 
     /*------------- preloader js --------------*/
     $(window).on('load', function() { // makes sure the whole site is loaded

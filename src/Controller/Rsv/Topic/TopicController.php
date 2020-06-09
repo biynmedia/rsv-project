@@ -22,6 +22,7 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class TopicController extends AbstractController
 {
+
     /**
      * Create a new Topic
      * @Route("/create", name="topic_create", methods={"GET|POST"})

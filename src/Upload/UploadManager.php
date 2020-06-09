@@ -33,6 +33,7 @@ class UploadManager
             $this->deleteUploadedFile($previousImage, 320);
             $this->deleteUploadedFile($previousImage, 370);
             $this->deleteUploadedFile($previousImage, 470);
+            $this->deleteUploadedFile($previousImage, 730);
         }
 
         # Set filename
@@ -53,6 +54,7 @@ class UploadManager
         $this->generateThumbnail($file, 320, 320);
         $this->generateThumbnail($file, 370, 250);
         $this->generateThumbnail($file, 470, 200);
+        $this->generateThumbnail($file, 730, 290);
 
         return $newFilename;
 

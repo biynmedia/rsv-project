@@ -74,6 +74,11 @@ class User implements UserInterface
      */
     private $answers;
 
+    /**
+     * @ORM\Column(type="string", length=80, nullable=true)
+     */
+    private $ministry;
+
     public function __construct()
     {
         $this->suggestedTopics = new ArrayCollection();
@@ -267,5 +272,17 @@ class User implements UserInterface
 
     public function eraseCredentials()
     {
+    }
+
+    public function getMinistry(): ?string
+    {
+        return $this->ministry;
+    }
+
+    public function setMinistry(?string $ministry): self
+    {
+        $this->ministry = $ministry;
+
+        return $this;
     }
 }

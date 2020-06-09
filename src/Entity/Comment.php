@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\CommentRepository")
@@ -42,6 +43,11 @@ class Comment
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $verse;
 
     public function __construct()
     {
@@ -106,9 +112,21 @@ class Comment
         return $this->user;
     }
 
-    public function setUser(?User $user): self
+    public function setUser(?UserInterface $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getVerse(): ?string
+    {
+        return $this->verse;
+    }
+
+    public function setVerse(?string $verse): self
+    {
+        $this->verse = $verse;
 
         return $this;
     }

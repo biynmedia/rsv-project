@@ -295,7 +295,7 @@
                 editor.model.document.on('change:data', () => {
                     const data = editor.getData();
                     const qS = document.querySelectorAll("label[for=rsv_answer_summary]");
-                    const nbLeftChar = 255 - data.length;
+                    const nbLeftChar = 512 - data.length;
                     qS[0].innerHTML = "Réponse courte <em>( " + nbLeftChar + " Caractères restants. )</em>";
                 });
             });

@@ -2,9 +2,12 @@
 
 namespace App\Repository;
 
+use App\Comment\Dbal\EnumCommentType;
 use App\Entity\Comment;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
+use Doctrine\ORM\NonUniqueResultException;
+use Doctrine\ORM\NoResultException;
 
 /**
  * @method Comment|null find($id, $lockMode = null, $lockVersion = null)
@@ -19,22 +22,26 @@ class CommentRepository extends ServiceEntityRepository
         parent::__construct($registry, Comment::class);
     }
 
-    // /**
-    //  * @return Comment[] Returns an array of Comment objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    /**
+     * @param int $userId
+     * @param int $topicId
+     * @return Comment[] Returns a Comment objects
+     * @throws NonUniqueResultException
+     */
+    public function findByUserAndTopic(int $userId, int $topicId)
     {
         return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('c.id', 'ASC')
-            ->setMaxResults(10)
+            ->andWhere('c.user = :userId')
+            ->setParameter('userId', $userId)
+            ->andWhere('c.topic = :topicId')
+            ->setParameter('topicId', $topicId)
+            ->andWhere('c.type = :commentType')
+            ->setParameter('commentType', EnumCommentType::STATUS_PUBLIC)
             ->getQuery()
-            ->getResult()
+            ->getOneOrNullResult()
         ;
     }
-    */
+
 
     /*
     public function findOneBySomeField($value): ?Comment

@@ -1,0 +1,17 @@
+<ul>
+    {% for topic in topics %}
+        <li>
+            <div class="widget_recent_entries-img">
+                <img width="120" src="{{ asset('uploads/320/' ~ topic.image ) }}" alt="{{ topic.name }}">
+            </div>
+            <div class="widget_recent_entries-content">
+                <h3><a href="{{ path('rsv_topic', {
+                        'category' : topic.category.alias,
+                        'alias' : topic.alias,
+                        'id' : topic.id
+                    }) }}">{{ topic.name }}</a></h3>
+                <h4>{{ topic.user.ministry ~ ' ' ~ topic.user.firstname }}</h4>
+            </div>
+        </li>
+    {% endfor %}
+</ul>

@@ -145,6 +145,9 @@ h3.blog-title {
   padding: 30px;
   margin-bottom: 30px;
   border-radius: 5px;
+  &--me {
+    border: 1px solid #f47e00;
+  }
 }
 .comment-theme {
   float: left;
@@ -170,6 +173,9 @@ h3.blog-title {
 }
 .comment-area p {
   margin-bottom: 25px;
+  &.verse {
+    color: grey;
+  }
 }
 .comments-reply a {
   font-weight: 700;

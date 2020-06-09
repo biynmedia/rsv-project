@@ -5,9 +5,12 @@ namespace App\Controller\Rsv;
 
 
 use App\Entity\Category;
+use App\Entity\Comment;
 use App\Entity\Topic;
 use App\Entity\Verse;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class RsvController extends AbstractController
@@ -34,6 +37,56 @@ class RsvController extends AbstractController
         ]);
     }
 
+
+    /**
+     * Display a Topic
+     * @Route("/{category}/{alias}_{id}.html", name="rsv_topic", methods={"GET"})
+     * @param Topic $topic
+     * @param $alias
+     * @param $category
+     * @return RedirectResponse|Response
+     */
+    public function topic($alias, $category, Topic $topic = null)
+    {
+
+        # Redirect if ID not Found
+        if ($topic === null) {
+            return $this->redirectToRoute('rsv_home');
+        }
+
+        # Redirect if alias isn't correct
+        if ($alias !== $topic->getAlias()) {
+            return $this->redirectToRoute('rsv_topic', [
+                'category' => $topic->getCategory()->getAlias(),
+                'alias' => $topic->getAlias(),
+                'id' => $topic->getId()
+            ]);
+        }
+
+        # Redirect if category isn't correct
+        if ($category !== $topic->getCategory()->getAlias()) {
+            return $this->redirectToRoute('rsv_topic', [
+                'category' => $topic->getCategory()->getAlias(),
+                'alias' => $topic->getAlias(),
+                'id' => $topic->getId()
+            ]);
+        }
+
+        # Check user comment permission
+        $userComment = null;
+        if($this->getUser() && $topic) {
+            $userComment = $this->getDoctrine()
+                ->getRepository(Comment::class)
+                ->findByUserAndTopic($this->getUser()->getId(), $topic->getId());
+        }
+
+        # Render View
+        return $this->render('rsv/topic/topic.html.twig', [
+           'topic' => $topic,
+            'userComment' => $userComment
+        ]);
+    }
+
     /**
      * Render Verse, Instagram Area
      */
@@ -51,6 +104,14 @@ class RsvController extends AbstractController
     }
 
     /**
+     * Newsletter Subscribe
+     */
+    public function newsletter()
+    {
+        return $this->render('components/_newsletter.html.twig');
+    }
+
+    /**
      * Render Category
      */
     public function category()
@@ -63,6 +124,22 @@ class RsvController extends AbstractController
             'categories' => $categories
         ]);
 
+    }
+
+    /**
+     * Get Latest Topics
+     */
+    public function latestTopics()
+    {
+        # Get topics TODO : Update with limit and order
+        $topics = $this->getDoctrine()
+            ->getRepository(Topic::class)
+            ->findAll();
+
+        # Render View
+        return $this->render('components/_topics.html.twig', [
+            'topics' => $topics
+        ]);
     }
 
 }

@@ -26,6 +26,7 @@ class UserFactory
         $user = new User();
         $user->setFirstname($req->firstname)
             ->setLastname($req->lastname)
+            ->setMinistry($req->ministry)
             ->setEmail($req->email)
             ->setRoles($req->roles)
             ->setRegistrationDate($req->registrationDate)

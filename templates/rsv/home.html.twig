@@ -15,7 +15,11 @@
                 <div class="col-lg-7 col-md-6">
                     <div class="featured-post-wrap">
                         <div class="featured-post-content">
-                            <h2><a href="#">{{ topic1.name }}</a>
+                            <h2><a href="{{ path('rsv_topic', {
+                                    'category' : topic1.category.alias,
+                                    'alias' : topic1.alias,
+                                    'id' : topic1.id
+                                }) }}">{{ topic1.name }}</a>
                                 <br><small>{{ topic1.user.firstname ~ ' ' ~ topic1.user.lastname }}</small></h2>
                             <p>{{ topic1.summary | raw }}</p>
                             <span>{{ topic1.publishDate | date('d/m/Y') }}</span>
@@ -31,7 +35,11 @@
                             <img src="{{ asset('uploads/470/' ~ topic2.image) }}" alt="{{ topic2.name }}">
                         </div>
                         <div class="featured-post-content">
-                            <h2><a href="#">{{ topic2.name }}</a>
+                            <h2><a href="{{ path('rsv_topic', {
+                                    'category' : topic2.category.alias,
+                                    'alias' : topic2.alias,
+                                    'id' : topic2.id
+                                }) }}">{{ topic2.name }}</a>
                                 <br><small>{{ topic2.user.firstname ~ ' ' ~ topic2.user.lastname }}</small></h2>
                             <p>{{ topic1.summary | raw }}</p>
                             <span>{{ topic2.publishDate | date('d/m/Y') }}</span>
@@ -132,13 +140,7 @@
                             </div>
                             <div class="col-lg-12 col-md-6 col-12">
                                 <div class="booking-form widget">
-                                    <form action="#">
-                                        <h2>Get Breaking News delivered to your inbox.</h2>
-                                        <input type="text" placeholder="Name here...">
-                                        <input type="text" placeholder="Phone here...">
-                                        <input type="email" placeholder="Emaile here...">
-                                        <button>Subscribe now</button>
-                                    </form>
+                                    {{ render(controller('App\\Controller\\Rsv\\RsvController::newsletter')) }}
                                 </div>
                             </div>
                         </div>

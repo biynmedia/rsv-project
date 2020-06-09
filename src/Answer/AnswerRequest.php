@@ -15,7 +15,7 @@ class AnswerRequest
 
     /**
      * @Assert\NotBlank(message="N'oubliez pas de rédiger une réponse courte.")
-     * @Assert\Length(max="255", maxMessage="Votre réponse ne peux pas dépasser {{ limit }} caractères.")
+     * @Assert\Length(max="512", maxMessage="Votre réponse ne peux pas dépasser {{ limit }} caractères.")
      */
     public $summary;
     public $content;

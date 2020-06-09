@@ -39,6 +39,7 @@ class UserRequest
      */
     public $password;
     public $roles = [];
+    public $ministry;
     public $registrationDate;
     public $lastConnectionDate;
     public $lastConnectionIp;

@@ -1,0 +1,32 @@
+{{ form_errors(form) }}
+
+{{ form_start(form, {attr: {novalidate: 'novalidate'}}) }}
+
+<div class="form-group">
+    <div class="row">
+        <div class="col-sm-4">
+            {{ form_label(form.book) }}
+            {{ form_errors(form.book) }}
+            {{ form_widget(form.book) }}
+        </div>
+        <div class="col-sm-4">
+            {{ form_label(form.chapter) }}
+            {{ form_errors(form.chapter) }}
+            {{ form_widget(form.chapter) }}
+        </div>
+        <div class="col-sm-4">
+            {{ form_label(form.verse) }}
+            {{ form_errors(form.verse) }}
+            {{ form_widget(form.verse) }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="alert alert-info mt-3" style="display: none;">
+                <p class="bible__verset mb-0"></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{ form_end(form) }}
