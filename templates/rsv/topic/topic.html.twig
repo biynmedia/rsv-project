@@ -72,6 +72,12 @@
 
                         {# Réponse Courte #}
                         <article>{{ topic.answer.summary | raw }}</article>
+
+                        {% if topic.answer.youtubeUrl is not null %}
+                            <iframe width="100%" height="450" class="mb-4"
+                                    src="{{ topic.answer.youtubeUrl }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        {% endif %}
+
                         <article class="readmore">{{ topic.answer.content | raw }}</article>
 
                         <ul class="socil-media">

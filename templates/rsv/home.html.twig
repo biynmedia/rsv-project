@@ -19,8 +19,13 @@
                                     'category' : topic1.category.alias,
                                     'alias' : topic1.alias,
                                     'id' : topic1.id
-                                }) }}">{{ topic1.name }}</a>
-                                <br><small>{{ topic1.user.firstname ~ ' ' ~ topic1.user.lastname }}</small></h2>
+                                }) }}">
+                                    {{ topic1.name }}
+                                    {% if topic1.answer.youtubeUrl is not null %}
+                                        <i class="fa fa-video-camera" aria-hidden="true"></i>
+                                    {% endif %}
+                                </a>
+                                <br><small>{{ topic1.user.ministry ~ ' ' ~ topic1.user.firstname ~ ' ' ~ topic1.user.lastname }}</small></h2>
                             <p>{{ topic1.summary | raw }}</p>
                             <span>{{ topic1.publishDate | date('d/m/Y') }}</span>
                         </div>
@@ -39,8 +44,13 @@
                                     'category' : topic2.category.alias,
                                     'alias' : topic2.alias,
                                     'id' : topic2.id
-                                }) }}">{{ topic2.name }}</a>
-                                <br><small>{{ topic2.user.firstname ~ ' ' ~ topic2.user.lastname }}</small></h2>
+                                }) }}">
+                                    {{ topic2.name }}
+                                    {% if topic2.answer.youtubeUrl is not null %}
+                                        <i class="fa fa-video-camera" aria-hidden="true"></i>
+                                    {% endif %}
+                                </a>
+                                <br><small>{{ topic2.user.ministry ~ ' ' ~ topic2.user.firstname ~ ' ' ~ topic2.user.lastname }}</small></h2>
                             <p>{{ topic1.summary | raw }}</p>
                             <span>{{ topic2.publishDate | date('d/m/Y') }}</span>
                         </div>

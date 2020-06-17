@@ -57,6 +57,11 @@ class Answer
      */
     private $topic;
 
+    /**
+     * @ORM\Column(type="string", length=180, nullable=true)
+     */
+    private $youtubeUrl;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -180,6 +185,18 @@ class Answer
         $this->topic = $topic;
         $this->writingDate = $writingDate;
         $this->updatedDate = new \DateTime();
+    }
+
+    public function getYoutubeUrl(): ?string
+    {
+        return $this->youtubeUrl;
+    }
+
+    public function setYoutubeUrl(?string $youtubeUrl): self
+    {
+        $this->youtubeUrl = $youtubeUrl;
+
+        return $this;
     }
 
 }
