@@ -29,7 +29,7 @@ class Topic
     private $summary;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text", nullable=true)
      */
     private $content;
 
