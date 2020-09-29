@@ -1,0 +1,26 @@
+{% extends "front_layout.html.twig" %}
+
+{% block title %}Poser une question{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-8 mx-auto">
+                <h3>Poser une question</h3>
+                <p>Vous vous poser une question, et aimeriez avoir une réponse...</p>
+
+                {% for message in app.flashes('notice') %}
+                    <div class="alert alert-success  alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                {% endfor %}
+
+                {{ form(form) }}
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

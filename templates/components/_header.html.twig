@@ -24,9 +24,6 @@
                                 <li><a href="{{ path('security_login') }}"><i class="fa fa-sign-in" aria-hidden="true"></i> Connexion</a></li>
                                 <li><a href="{{ path('user_register') }}"><i class="fa fa-user-plus" aria-hidden="true"></i> Inscription</a></li>
                             {% endif %}
-                            <li><a href="#"><i class="fa fa-facebook-square" aria-hidden="true"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                            <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
                         </ul>
                     </div>
                 </div>
@@ -40,7 +37,7 @@
                     <div class="mainmenu">
                         <ul id="navigation">
                             <li class="active"><a href="{{ path('rsv_home') }}">Accueil</a></li>
-                            <li><a href="javascript:void(0)">Poser une Question</a></li>
+                            <li><a href="{{ path('public_topic') }}">Poser une Question</a></li>
                             {#<li><a href="javascript:void(0)">Les sujets <i class="fa fa-angle-down"></i></a>
                                 <ul>
                                     <li><a href="javascript:void(0)">Blog Page</a></li>

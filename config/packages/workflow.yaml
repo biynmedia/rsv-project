@@ -8,17 +8,25 @@ framework:
             supports:
                 - App\Entity\Topic
                 - App\Topic\TopicRequest
-            initial_marking: draft
+                - App\Topic\PublicTopicRequest
+            initial_marking: pending
             places:
+                - pending
                 - draft
                 - review
                 - consultation
                 - published
                 - unpublished
             transitions:
+                await:
+                    from: pending
+                    to: draft
                 review:
                     from: draft
                     to:   review
+                await_review:
+                    from: pending
+                    to: review
                 approval:
                     from: review
                     to:   consultation

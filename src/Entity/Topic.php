@@ -24,7 +24,7 @@ class Topic
     private $name;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $summary;
 
@@ -75,7 +75,7 @@ class Topic
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="topics")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $category;
 
@@ -88,6 +88,16 @@ class Topic
      * @ORM\OneToOne(targetEntity="App\Entity\Answer", inversedBy="topic", cascade={"persist", "remove"})
      */
     private $answer;
+
+    /**
+     * @ORM\Column(type="string", length=80, nullable=true)
+     */
+    private $userFirstname;
+
+    /**
+     * @ORM\Column(type="string", length=80, nullable=true)
+     */
+    private $userNotificationEmail;
 
     public function __construct()
     {
@@ -322,5 +332,29 @@ class Topic
         $this->status = $status;
         $this->category = $category;
         $this->updatedDate = new \DateTime();
+    }
+
+    public function getUserFirstname(): ?string
+    {
+        return $this->userFirstname;
+    }
+
+    public function setUserFirstname(?string $userFirstname): self
+    {
+        $this->userFirstname = $userFirstname;
+
+        return $this;
+    }
+
+    public function getUserNotificationEmail(): ?string
+    {
+        return $this->userNotificationEmail;
+    }
+
+    public function setUserNotificationEmail(?string $userNotificationEmail): self
+    {
+        $this->userNotificationEmail = $userNotificationEmail;
+
+        return $this;
     }
 }

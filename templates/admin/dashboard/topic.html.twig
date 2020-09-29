@@ -36,9 +36,9 @@
                 <div class="card">
                     <div class="card-body">
                         <small class="text-muted">Proposé par</small>
-                        <h6>{{ topic.user.firstname ~ ' ' ~ topic.user.lastname }}</h6>
+                        <h6>{{ topic.user ? topic.user.firstname ~ ' ' ~ topic.user.lastname : topic.userFirstname ?? 'Anonyme' }}</h6>
                         <small class="text-muted p-t-30 db">Catégorie</small>
-                        <h6>{{ topic.category.name }}</h6>
+                        <h6>{{ topic.category ? topic.category.name : 'A définir' }}</h6>
                         <small class="text-muted p-t-30 db">Illustration</small>
                         <div class="map-box">
                             <img class="img-fluid" src="{{ asset('uploads/470/' ~ topic.image ) }}"
@@ -100,7 +100,7 @@
                         {% endif %}
 
 
-                        {% if ((topic.user.id == app.user.id) and topic.status == 'review') or is_granted('ROLE_ADMIN') %}
+                        {% if topic.status == 'draft' or ((topic.user and topic.user.id == app.user.id) and topic.status == 'review') or is_granted('ROLE_ADMIN') %}
                             <a href="{{ path('topic_edit', { 'id' : topic.id }) }}"
                                data-toggle="tooltip" title="Modifier le sujet"
                                class="btn waves-effect waves-light btn-block btn-warning"><i class="fas fa-edit"></i>

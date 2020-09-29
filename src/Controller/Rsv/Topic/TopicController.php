@@ -67,7 +67,7 @@ class TopicController extends AbstractController
     /**
      * Edit a Topic
      * @Route("/edit/{id}", name="topic_edit", methods={"GET|POST"})
-     * @Security("(topic.getStatus() != 'published' and topic.isWriter(user) and is_granted('ROLE_MINISTRY')) or is_granted('ROLE_ADMIN')")
+     * @Security("topic.getStatus() == 'draft' or (topic.getStatus() != 'published' and topic.isWriter(user) and is_granted('ROLE_MINISTRY')) or is_granted('ROLE_ADMIN')")
      * @param Topic $topic
      * @param Request $request
      * @param Packages $packages
@@ -148,4 +148,5 @@ class TopicController extends AbstractController
         # Redirect to topics page
         return $this->redirectToRoute('admin_topics');
     }
+
 }

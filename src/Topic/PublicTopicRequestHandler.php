@@ -10,7 +10,7 @@ use App\Upload\UploadManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Workflow\Registry;
 
-class TopicRequestHandler
+class PublicTopicRequestHandler
 {
 
     use RsvTrait;
@@ -28,25 +28,17 @@ class TopicRequestHandler
         $this->topicFactory = $topicFactory;
     }
 
-    public function handle(TopicRequest $topicRequest)
+    public function handle(PublicTopicRequest $topicRequest)
     {
         # Generate Topic Alias
         $topicRequest->alias = $this->slugify($topicRequest->name);
 
-        # Handle Image Upload
-        if($topicRequest->image) {
-            $topicRequest->image = $this->uploadManager->upload($topicRequest->image);
-        } else {
-            # TODO : Pas d'images il faut gérer une image par défaut
-            $topicRequest->image = 'default.png';
-        }
-
         # Handle Workflow Process
         $workflow = $this->workflows->get($topicRequest);
-        $workflow->apply($topicRequest, 'await_review');
+        $workflow->apply($topicRequest, 'await');
 
         # Create Topic Profil
-        $topic = $this->topicFactory->createFromTopicRequest($topicRequest);
+        $topic = $this->topicFactory->createFromPublicTopicRequest($topicRequest);
 
         # Persist data
         $this->manager->persist($topic);

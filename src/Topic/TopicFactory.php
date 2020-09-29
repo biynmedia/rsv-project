@@ -9,7 +9,7 @@ use App\Entity\Topic;
 class TopicFactory
 {
     /**
-     * Transform UserRequest into User
+     * Transform TopicRequest into Topic
      * @param TopicRequest $req
      * @return Topic
      */
@@ -24,6 +24,25 @@ class TopicFactory
             ->setContent($req->content)
             ->setImage($req->image)
             ->setSummary($req->summary)
+            ->setWritingDate($req->writingDate);
+
+        return $topic;
+    }
+
+    /**
+     * Transform PublicTopicRequest into Topic
+     * @param PublicTopicRequest $req
+     * @return Topic
+     */
+    public function createFromPublicTopicRequest(PublicTopicRequest $req): Topic
+    {
+        $topic = new Topic();
+        $topic->setName($req->name)
+            ->setAlias($req->alias)
+            ->setUserFirstname($req->userFirstName)
+            ->setUserNotificationEmail($req->userNotificationEmail)
+            ->setStatus($req->status)
+            ->setImage('default.png')
             ->setWritingDate($req->writingDate);
 
         return $topic;

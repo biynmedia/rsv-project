@@ -46,13 +46,13 @@
                                     <tr>
                                         <td>{{ topic.id }}</td>
                                         <td>{{ topic.name }}</td>
-                                        <td>{{ topic.category.name }}</td>
-                                        <td>{{ topic.user.firstname ~ ' ' ~ topic.user.lastname }}</td>
+                                        <td>{{ topic.category ? topic.category.name : 'A définir' }}</td>
+                                        <td>{{ topic.user ? topic.user.firstname ~ ' ' ~ topic.user.lastname : topic.userFirstname ?? 'Anonyme' }}</td>
                                         <td>{{ topic.writingDate | date('d/m/Y') }}</td>
                                         <td>{{ topic.status }}</td>
                                         <td>
                                             <a href="{{ path('admin_topic', { 'id' : topic.id, 'alias' : topic.alias }) }}" data-toggle="tooltip" title="Consulter" class="btn btn-primary"><i class="fas fa-eye"></i></a>
-                                            {% if (topic.status != 'published' and topic.user.id == app.user.id) or is_granted('ROLE_ADMIN') %}
+                                            {% if topic.status == 'draft' or (topic.status != 'published' and topic.user and topic.user.id == app.user.id) or is_granted('ROLE_ADMIN') %}
                                                 <a href="{{ path('topic_edit', { 'id' : topic.id }) }}" data-toggle="tooltip" title="Editer" class="btn btn-warning"><i class="fas fa-edit"></i></a>
                                             {% endif %}
 

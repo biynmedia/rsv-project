@@ -134,7 +134,7 @@ class RsvController extends AbstractController
         # Get topics TODO : Update with limit and order
         $topics = $this->getDoctrine()
             ->getRepository(Topic::class)
-            ->findAll();
+            ->findLastTopics(3);
 
         # Render View
         return $this->render('components/_topics.html.twig', [

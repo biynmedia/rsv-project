@@ -18,6 +18,10 @@ class TopicRequest
      */
     public $name;
     public $alias;
+
+    /**
+     * @Assert\NotBlank(message="Vous devez choisir une catégorie.")
+     */
     public $category;
 
     /**

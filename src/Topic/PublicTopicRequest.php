@@ -3,25 +3,20 @@
 
 namespace App\Topic;
 
+use Symfony\Component\Validator\Constraints as Assert;
 
 class PublicTopicRequest
 {
     public $id;
 
     /**
-     * @Assert\NotBlank(message="Saisissez le titre du sujet.")
-     * @Assert\Length(max="180", maxMessage="Votre titre ne peux pas dépasser {{ limit }} caractères.")
+     * @Assert\NotBlank(message="Saisissez votre question.")
+     * @Assert\Length(max="180", maxMessage="Votre question ne peux pas dépasser {{ limit }} caractères.")
      */
     public $name;
     public $alias;
-    public $category;
-
-    /**
-     * @Assert\NotBlank(message="Rédigez une accroche.")
-     * @Assert\Length(max="255", maxMessage="Votre accroche ne peux pas dépasser {{ limit }} caractères.")
-     */
-    public $summary;
-    public $user;
+    public $userFirstName;
+    public $userNotificationEmail;
     public $status;
     public $writingDate;
 
@@ -29,4 +24,21 @@ class PublicTopicRequest
     {
         $this->writingDate = new \DateTime();
     }
+
+    /**
+     * @return mixed
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * @param mixed $status
+     */
+    public function setStatus($status): void
+    {
+        $this->status = $status;
+    }
+
 }

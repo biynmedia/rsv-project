@@ -34,7 +34,8 @@ class Comment
     private $topic;
 
     /**
-     * @ORM\Column(type="enumcomment", length=80)
+     * TODO : enumcomment
+     * @ORM\Column(type="string", length=80)
      */
     private $type;
 
