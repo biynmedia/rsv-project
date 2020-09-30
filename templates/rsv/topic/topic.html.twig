@@ -59,7 +59,7 @@
                                 <li>Eclairage apporté par</li>
                                 <li>:</li>
                                 <li>
-                                    <a href="#">{{ topic.user.ministry ~ ' ' ~ topic.user.firstname  ~ ' ' ~ topic.user.lastname }}</a>
+                                    <a href="#">{{ topic.user ? topic.user.ministry ~ ' ' ~ topic.user.firstname  ~ ' ' ~ topic.user.lastname : userFirstName ?? 'Anonyme' }}</a>
                                 </li>
                             </ul>
                             {# Contribution #}

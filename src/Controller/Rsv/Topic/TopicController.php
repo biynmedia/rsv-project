@@ -133,8 +133,10 @@ class TopicController extends AbstractController
         $uploadManager->deleteUploadedFile($topic->getImage());
         $uploadManager->deleteUploadedFile($topic->getImage(), 120);
         $uploadManager->deleteUploadedFile($topic->getImage(), 250);
+        $uploadManager->deleteUploadedFile($topic->getImage(), 320);
         $uploadManager->deleteUploadedFile($topic->getImage(), 370);
         $uploadManager->deleteUploadedFile($topic->getImage(), 470);
+        $uploadManager->deleteUploadedFile($topic->getImage(), 730);
 
         # Remove from doctrine
         $em = $this->getDoctrine()->getManager();

@@ -25,7 +25,7 @@
                                         <i class="fa fa-video-camera" aria-hidden="true"></i>
                                     {% endif %}
                                 </a>
-                                <br><small>{{ topic1.user.ministry ~ ' ' ~ topic1.user.firstname ~ ' ' ~ topic1.user.lastname }}</small></h2>
+                                <br><small>{{ topic1.user ? topic1.user.ministry ~ ' ' ~ topic1.user.firstname ~ ' ' ~ topic1.user.lastname : topic1.userFirstName ?? 'Anonyme' }}</small></h2>
                             <p>{{ topic1.summary | raw }}</p>
                             <span>{{ topic1.publishDate | date('d/m/Y') }}</span>
                         </div>

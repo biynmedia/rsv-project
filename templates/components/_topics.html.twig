@@ -10,7 +10,7 @@
                         'alias' : topic.alias,
                         'id' : topic.id
                     }) }}">{{ topic.name }}</a></h3>
-                <h4>{{ topic.user.ministry ~ ' ' ~ topic.user.firstname }}</h4>
+                <h4>{{ topic.user ? topic.user.ministry ~ ' ' ~ topic.user.firstname : topic.userFirstName ?? 'Anonyme' }}</h4>
             </div>
         </li>
     {% endfor %}
